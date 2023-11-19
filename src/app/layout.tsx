@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Navbar from "@/components/shared/Navbar"
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +17,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
+      </head>
+      <body className={inter.className} suppressHydrationWarning={true}>
+        <Navbar/>
+        <div className='w-[90%] mx-auto md:w-[60%]'>
+          {children}
+        </div>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
+      </body>
     </html>
   )
 }
