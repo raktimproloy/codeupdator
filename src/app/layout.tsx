@@ -18,11 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
+      {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" /> */}
       </head>
       <body className={inter.className} suppressHydrationWarning={true}>
         <Navbar/>
-        <div className='w-[90%] mx-auto md:w-[60%]'>
+        <div className='max-w-6xl m-auto px-5'>
           {children}
         </div>
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
