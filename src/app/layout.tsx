@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { PT_Sans } from 'next/font/google'
 import Navbar from "@/components/shared/Navbar"
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const pt_sans = PT_Sans({ weight: ['400', "700"], subsets: ['cyrillic'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
       {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" /> */}
       </head>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={pt_sans.className} suppressHydrationWarning={true}>
         <Navbar/>
         <div className='max-w-6xl m-auto px-5'>
           {children}
