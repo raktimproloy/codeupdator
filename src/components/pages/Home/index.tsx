@@ -1,5 +1,5 @@
 import React from "react";
-import { ThreeDotVerticale } from "@/components/store/icons/ThreeDotVerticale";
+import { ThreeDotVerticale } from "@/store/icons/Icons";
 
 function index() {
   return (
