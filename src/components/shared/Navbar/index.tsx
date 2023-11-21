@@ -1,5 +1,7 @@
 import React from 'react'
 import SubMenuItems from './SubMenuItems'
+import { Home, Category, Problem, About, Contact } from '@/store/icons/Icons'
+import Styles from "./style.module.css"
 
 function index() {
   return (
@@ -97,30 +99,20 @@ function index() {
             </div>
             <div className='bg-gray-500'>
                 <div className='grid grid-cols-5 md:hidden'>
-                    <div className='flex justify-center border-2 py-3'>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg> 
+                    <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                        <Home/>
                     </div>
-                    <div className='flex justify-center border-2 py-3'>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg> 
+                    <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                        <Category/>
                     </div>
-                    <div className='flex justify-center border-2 py-3'>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg> 
+                    <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                        <Problem/>
                     </div>
-                    <div className='flex justify-center border-2 py-3'>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg> 
+                    <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                        <About/>
                     </div>
-                    <div className='flex justify-center border-2 py-3'>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg> 
+                    <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                        <Contact/>
                     </div>
                 </div>
             </div>
