@@ -32,7 +32,7 @@ Collecting code coverage via the NODE_V8_COVERAGE environment variable may lead 
         </div>
 
         </div>
-        <div className="w-2/12 px-5 hidden md:flex">
+        <div className="w-2/12 px-5 hidden md:flex whitespace-normal">
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
