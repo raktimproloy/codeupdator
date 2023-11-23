@@ -1,6 +1,7 @@
 import React from 'react'
 import { isAuthenticated } from '@/utils/Auth'
 import { redirect } from 'next/navigation';
+import AboutPage from "@/components/pages/About"
 
 function page() {
     const isAuth = isAuthenticated;
@@ -10,7 +11,7 @@ function page() {
         redirect("/");
     }
   return (
-    <div>This is protected about</div>
+    <AboutPage/>
   )
 }
 
