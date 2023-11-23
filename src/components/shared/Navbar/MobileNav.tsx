@@ -6,21 +6,21 @@ import Dropdown from './Dropdown'
 function MobileNav() {
   return (
     <>
-        <div className='bg-gray-500'>
-            <div className='grid grid-cols-5 md:hidden'>
-                <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+        <div className=''>
+            <div className='grid grid-cols-5 gap-3 md:hidden px-2'>
+                <div className={`flex justify-center border-r text-gray-700 ${Styles.iconStyle}`}>
                     <Home/>
                 </div>
-                <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                <div className={`flex justify-center border-r ${Styles.iconStyle}`}>
                     <Category/>
                 </div>
-                <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                <div className={`flex justify-center border-r ${Styles.iconStyle}`}>
                     <Problem/>
                 </div>
-                <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                <div className={`flex justify-center border-r ${Styles.iconStyle}`}>
                     <About/>
                 </div>
-                <div className={`flex justify-center border-2 py-3 ${Styles.iconStyle}`}>
+                <div className={`flex justify-center ${Styles.iconStyle}`}>
                     <Contact/>
                 </div>
             </div>
