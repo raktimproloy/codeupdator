@@ -9,7 +9,7 @@ function index() {
       <div className="flex py-5">
         {/* Left Section */}
         <div className="w-full h-fit md:w-4/6 shadow rounded p-3">
-          <div className="flex justify-between space-x-5">
+          <div className="flex justify-between items-center space-x-5">
               <div className="flex items-center space-x-2">
                 <img
                   src="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"
@@ -20,9 +20,18 @@ function index() {
                   <span className="text-xs">19 Nov 2023</span>
                 </div>
               </div>
-            <div className="">
-              <ThreeDotVerticale />
-            </div>
+              <div className="dropdown dropdown-bottom dropdown-end">
+                <div tabIndex={0} role="button" className="m-1">
+                  <div className="w-7 h-7 text-gray-600 cursor-pointer" title="ThreeDot">
+                    <ThreeDotVerticale/>
+                  </div>
+                </div>
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a>Item 1</a></li>
+                  <li><a>Item 2</a></li>
+                </ul>
+              </div>
+              
           </div>
           <div className="flex flex-col">
             <div className="py-2 text-gray-600">
@@ -74,10 +83,12 @@ function index() {
         </div>
 
         {/* Right Section */}
-        <div className="w-2/12 px-5 hidden md:flex whitespace-normal">
-          <div className="w-100 border-2">
-            <h5>Login For Get Update First</h5>
-            <button>Login</button>
+        <div className="w-2/6 px-5 hidden md:flex whitespace-normal">
+          <div className="w-100">
+            <div className="border-2">
+              <h5>Login For Get Update First</h5>
+              <button>Login</button>
+            </div>
           </div>
         </div>
       </div>
