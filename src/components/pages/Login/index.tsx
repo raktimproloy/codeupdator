@@ -1,32 +1,46 @@
 import React from 'react'
-import { Facebook, Google, Github } from '@/store/icons/Icons'
+import { Facebook, Google, Github, Login } from '@/store/icons/Icons'
 
 function index() {
   return (
-    <div className='flex justify-center items-center h-full'>
-      <div className="card w-96 bg-base-100 shadow-xl p-5">
-        <h1 className='text-center'>LOGIN</h1>
-        <div className='my-3'>
-          <label htmlFor="email" className='text-left'>Email</label>
-          <input type="text" placeholder="Type here" className="input input-bordered w-full" />
+    <div className='flex justify-center items-center h-screen -mt-20'>
+      <div className="card w-96 bg-base-100 shadow p-5 rounded">
+        <div className='flex justify-center items-center space-x-2 text-2xl'>
+            <div className='text-gray-600'>
+               <Login/>
+            </div>
+            <h1 className='font-semibold text-gray-600'>
+              Login
+            </h1>
         </div>
-        <div className='my-3'>
-        <label htmlFor="password" className='text-start'>Password</label>
-        <input type="text" placeholder="Type here" className="input input-bordered w-full" />
-        </div>
-        <button className="btn btn-wide w-full btn-info">Wide</button>
-        <div className='flex justify-between items-center'>
-        <button className="btn btn-outline btn-error mt-3">
-          Google
-          <Google/>
+            <form>
+            <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Email</span>
+            </div>
+            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs rounded" required/>
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Passowrd</span>
+            </div>
+            <input type="password" placeholder="********" className="input input-bordered w-full max-w-xs rounded" required/>
+          </label>
+        <button className="btn w-full btn-primary mt-5 rounded">Login</button>
+            </form>
+        <div className="divider text-gray-600">OR</div>
+        <div className='flex flex-col space-y-3 justify-between items-center'>
+        <button className="btn w-full rounded">
+        <Google/>
+          Login with Google
         </button>
-        <button className="btn btn-outline btn-primary mt-3">
-          Facebook
-          <Facebook/>
+        <button className="btn w-full rounded">
+        <Facebook/>
+          Login with Facebook
         </button>
-        <button className="btn btn-outline btn-dark mt-3">
-          Github
-          <Github/>
+        <button className="btn w-full rounded">
+        <Github/>
+          Login with Github
         </button>
         </div>
       </div>
