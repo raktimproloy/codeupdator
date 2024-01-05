@@ -27,17 +27,19 @@ export default function RootLayout({
   // const headersList = headers();
   // domainStore(headersList.get('host')?.toString());
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <head>
       <link rel="icon" href="/icon.png" type="image/png" sizes='32x32' />
       {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" /> */}
       </head>
       <body className={pt_sans.className} suppressHydrationWarning={true}>
-        {!pathname.includes("login") && <Navbar/>}
+        {/* {!pathname.includes("login") && <Navbar/>} */}
+         <Navbar/>
         <div className='max-w-6xl m-auto px-5 mt-[100px]'>
           {children}
         </div>
-        {!pathname.includes("login") && <Footer/>}
+        {/* {!pathname.includes("login") && <Footer/>} */}
+        <Footer/>
         
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
       </body>
