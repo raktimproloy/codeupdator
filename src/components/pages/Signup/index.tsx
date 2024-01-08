@@ -1,6 +1,11 @@
 import { Facebook, Github, Google, Signup } from '@/store/icons/Icons'
 import React from 'react'
 
+// Location add hoba
+// portfolio add hoba
+// bio add hoba
+
+
 function index() {
   return (
     <div className='flex justify-center items-center h-screen -mt-20'>
