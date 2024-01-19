@@ -13,7 +13,7 @@ function ListCard() {
                 </div>
             </div>
             <div className='ml-5'>
-                <h1 className='font-bold text-2xl'>Joshim Uddin</h1>
+                <h1 className='font-bold text-2xl'>Joshim Uddinnnn</h1>
                 <p>@joshim_laravelest</p>
                 <div className='flex mt-2 items-center text-gray-600'>
                   <Location/>

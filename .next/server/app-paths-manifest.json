@@ -1,14 +1,14 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/(forget-password)/forget-password/[id]/page": "app/(forget-password)/forget-password/[id]/page.js",
-  "/about/page": "app/about/page.js",
   "/(forget-password)/forget-password/page": "app/(forget-password)/forget-password/page.js",
+  "/(forget-password)/forget-password/[id]/page": "app/(forget-password)/forget-password/[id]/page.js",
   "/category/[slug]/page": "app/category/[slug]/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/icon.png/route": "app/icon.png/route.js",
+  "/about/page": "app/about/page.js",
   "/login/page": "app/login/page.js",
+  "/contact/page": "app/contact/page.js",
   "/page": "app/page.js",
-  "/signup/page": "app/signup/page.js",
   "/problem/page": "app/problem/page.js",
-  "/profile/[id]/page": "app/profile/[id]/page.js"
+  "/icon.png/route": "app/icon.png/route.js",
+  "/profile/[id]/page": "app/profile/[id]/page.js",
+  "/signup/page": "app/signup/page.js"
 }
