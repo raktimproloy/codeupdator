@@ -1,5 +1,6 @@
 import Interest from '@/components/shared/Profile/Interest'
 import { Location, Email } from '@/store/icons/Icons'
+import Link from 'next/link'
 import React from 'react'
 
 function ListCard() {
@@ -13,8 +14,8 @@ function ListCard() {
                 </div>
             </div>
             <div className='ml-5'>
-                <h1 className='font-bold text-2xl'>Joshim Uddinnnn</h1>
-                <p>@joshim_laravelest</p>
+                <h1 className='font-bold text-2xl'>Joshim Uddin</h1>
+                <Link href='#' className='font-semibold text-gray-500'>@joshim_laravelest</Link>
                 <div className='flex mt-2 items-center text-gray-600'>
                   <Location/>
                   <span className='ml-1'>Bangladesh</span>

@@ -10,6 +10,7 @@ interface PropsData{
 function index({id}: PropsData) {
   return (
     <>
+    <div className='max-w-6xl m-auto px-5 mt-[100px]'>
     <div className='grid grid-cols-1 py-5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 md:gap-10 '>
         <div className='col-span-1 mb-5'>
             <ProfileInfo/>
@@ -23,6 +24,7 @@ function index({id}: PropsData) {
         <div className='col-span-1 hidden md:block'>
             <Bio/>
         </div>
+    </div>
     </div>
     </>
   )
