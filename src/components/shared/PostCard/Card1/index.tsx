@@ -4,7 +4,7 @@ import { CommentBox, HeartEmpty, ShareBtn, ThreeDotVerticale } from '@/store/ico
 
 function index() {
   return (
-    <div className="w-full h-fit shadow rounded p-3">
+    <div className="w-fit h-fit shadow rounded p-3">
           <div className="flex justify-between items-center space-x-5">
               <div className="flex items-center space-x-2">
                 <img
@@ -18,7 +18,7 @@ function index() {
               </div>
               <div className="dropdown dropdown-bottom dropdown-end">
                 <div tabIndex={0} role="button" className="m-1">
-                  <div className="w-7 h-7 text-gray-600 cursor-pointer" title="ThreeDot">
+                  <div className="w-5 h-5 text-gray-600 cursor-pointer" title="More">
                     <ThreeDotVerticale/>
                   </div>
                 </div>

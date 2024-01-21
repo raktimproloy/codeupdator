@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={pt_sans.className} suppressHydrationWarning={true}>
         {/* {!pathname.includes("login") && <Navbar/>} */}
          <Navbar/>
-        <div className='max-w-6xl m-auto px-5 mt-[100px]'>
+        <div className='w-full mt-[100px]'>
           {children}
         </div>
         {/* {!pathname.includes("login") && <Footer/>} */}
