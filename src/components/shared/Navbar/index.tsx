@@ -30,7 +30,7 @@ function Index() {
 
   return (
     <>
-        <div className='shadow-md shadow-black/10 fixed top-0 z-10 w-full bg-base-100'>
+        <div className='shadow-md fixed top-0 z-10 w-full bg-base-100'>
             <div className="navbar max-w-screen-xl mx-auto">
                 <div className="navbar-start">
                     <Link
@@ -95,7 +95,7 @@ function Index() {
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded w-52">
-                            <div className='border-b-2 pb-4 px-3'>
+                            <div className='pb-4 px-3'>
                             <div className="flex justify-between">
                                 Theme
                                 <span className="badge">
@@ -119,7 +119,7 @@ function Index() {
                     </div>
                 </div>
             </div>
-            <div className='border-t-2'>
+            <div className=''>
                 <MobileMenu/>
             </div>
         </div>
