@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,7 +10,24 @@ import MobileMenu from './MobileMenu';
 import Logo from "/public/images/logo.svg";
 import DefaultProfileImage from "/public/images/default-profile.png";
 
-function index() {
+function Index() {
+    const [theme, setTheme] = useState("")
+    useEffect(() => {
+        var htmlElement = document.documentElement;
+        const localTheme = localStorage.getItem("_theme") || "light"
+        setTheme(localTheme)
+        htmlElement.setAttribute("data-theme", localTheme);
+    }, [])
+
+    const handleTheme = (e: any) => {
+        const newTheme = e.target.checked ? "light" : "dark";
+        var htmlElement = document.documentElement;
+        htmlElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("_theme", newTheme);
+        setTheme(newTheme);  // Update the theme state
+    };
+
+
   return (
     <>
         <div className='shadow-md shadow-black/10 fixed top-0 z-10 w-full bg-base-100'>
@@ -24,44 +42,45 @@ function index() {
                 </div>
                 <div className="navbar-center hidden md:flex">
                     <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
+                    <li><Link href={"/"} className='text-base hover:bg-inherit hover:text-red-500'>Home</Link></li>
                     <li>
                         <details>
-                        <summary>Category</summary>
+                        <summary className='text-base hover:bg-inherit active:text-red-500 hover:text-red-500'>Category</summary>
                         <ul className="menu md:menu-horizontal md:min-w-max bg-base-400 rounded transform translate-x-[-43%] translate-y-[2px]" style={{padding:"2rem"}}>
                             <li className='px-7'>
-                                <a className='text-xl font-bold menu-title'>Language</a>
+                                <p className='text-xl font-bold menu-title'>Language</p>
                                 <ul>
-                                <li><a>Javascript</a></li>
-                                <li><a>PHP</a></li>
-                                <li><a>Python</a></li>
+                                <li><Link href={"/category/javascript"}>Javascript</Link></li>
+                                <li><Link href={"/category/php"}>PHP</Link></li>
+                                <li><Link href={"/category/python"}>Python</Link></li>
                                 </ul>
                             </li>
                             <li className='px-7'>
-                                <a className='text-xl font-bold menu-title'>Frontend</a>
+                                <p className='text-xl font-bold menu-title'>Frontend</p>
                                 <ul>
-                                <li><a>ReactJs</a></li>
-                                <li><a>NextJs</a></li>
-                                <li><a>VueJs</a></li>
+                                <li><Link href={"/category/reactjs"}>ReactJs</Link></li>
+                                <li><Link href={"/category/nextjs"}>NextJs</Link></li>
+                                <li><Link href={"/category/vuejs"}>VueJs</Link></li>
                                 </ul>
                             </li>
                             <li className='px-7'>
-                                <a className='text-xl font-bold menu-title'>Backend</a>
+                                <p className='text-xl font-bold menu-title'>Backend</p>
                                 <ul>
-                                <li><a>Laravek</a></li>
-                                <li><a>NodeJs</a></li>
+                                <li><Link href={"/category/laravel"}>Laravel</Link></li>
+                                <li><Link href={"/category/nodejs"}>NodeJs</Link></li>
                                 </ul>
                             </li>
                         </ul>
             
                         </details>
                     </li>
-                    <li><a>Problem</a></li>
-                    <li><a>Top Rated</a></li>
+                    <li><Link href={"/problem"} className='text-base hover:bg-inherit hover:text-red-500'>Problem</Link></li>
+                    <li><Link href={"/toprated"} className='text-base hover:bg-inherit hover:text-red-500'>Top Rated</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <MobileSearch/>
+                    {/* Desktop menu */}
                     <Search />
                     <div className="dropdown dropdown-end ml-5 bg-gray-800 rounded-full hidden md:block">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -76,10 +95,22 @@ function index() {
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded w-52">
-                            <li>
+                            <div className='border-b-2 pb-4 px-3'>
+                            <div className="flex justify-between">
+                                Theme
+                                <span className="badge">
+                                <input
+                                    type="checkbox"
+                                    className="toggle"
+                                    checked={theme === "light"}
+                                    onChange={(e) => handleTheme(e)}
+                                />
+                                </span>
+                            </div>
+                            </div>
+                            <li className='mt-2'>
                             <a className="justify-between">
                                 Profile
-                                <span className="badge">New</span>
                             </a>
                             </li>
                             <li><a>Settings</a></li>
@@ -96,4 +127,4 @@ function index() {
   )
 }
 
-export default index
+export default Index
