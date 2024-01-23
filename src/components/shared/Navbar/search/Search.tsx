@@ -8,7 +8,7 @@ function Search() {
             <SearchIcon/>
             <span className="sr-only">Search icon</span>
         </div>
-        <input type="text" id="search-navbar" className="block w-full px-2 ps-10 input input-bordered w-full max-w-xs" placeholder="Search..." style={{height: "2.5rem"}}/>
+        <input type="text" id="search-navbar" className="block w-full px-2 ps-10 input input-bordered w-full max-w-xs rounded" placeholder="Search..." style={{height: "2.5rem"}}/>
     </div>
   )
 }
