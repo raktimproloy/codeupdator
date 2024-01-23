@@ -1,13 +1,8 @@
-'use client'
-
 // import type { Metadata } from 'next'
 import { PT_Sans } from 'next/font/google'
 import Navbar from "@/components/shared/Navbar"
 import Footer from "@/components/shared/Footer"
-// import { headers } from 'next/headers';
 import './globals.css'
-import domainStore from '@/store/storage/domainStore';
-import { usePathname } from 'next/navigation'
 
 const pt_sans = PT_Sans({ weight: ['400', "700"], subsets: ['cyrillic'] })
 
@@ -23,9 +18,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const pathname = usePathname()
-  // const headersList = headers();
-  // domainStore(headersList.get('host')?.toString());
+
   return (
     <html lang="en" data-theme="light">
       <head>
@@ -35,7 +28,7 @@ export default function RootLayout({
       <body className={pt_sans.className} suppressHydrationWarning={true}>
         {/* {!pathname.includes("login") && <Navbar/>} */}
          <Navbar/>
-        <div className='w-full mt-[100px]'>
+        <div className='w-full mt-[75px]'>
           {children}
         </div>
         {/* {!pathname.includes("login") && <Footer/>} */}
