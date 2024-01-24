@@ -1,5 +1,6 @@
 import React from "react";
 import Card1 from "@/components/shared/PostCard/Card1";
+import Footer from '@/components/shared/Footer';
 
 function index() {
   return (
@@ -16,12 +17,7 @@ function index() {
         {/* Right Section */}
         <div className="w-2/6">
         <div className="hidden md:flex">
-          <div className="">
-            <div className="border-2">
-              <h5>Login For Get Update Firstsdfdfdf</h5>
-              <button>Login</button>
-            </div>
-          </div>
+          <Footer/>
         </div>
         </div>
 
