@@ -16,8 +16,16 @@ function index() {
 
         {/* Right Section */}
         <div className="w-2/6">
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center border-t border-gray-500">
           <Footer/>
+        </div>
+        <div className="ml-5">
+            <ul className="flex flex-row list-disc justify-between text-sm">
+              <li>Terms & Confition</li>
+              <li>Privacy & Policy</li>
+              <li>About </li>
+              <li>Contact</li>
+            </ul>
         </div>
         </div>
 
