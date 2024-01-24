@@ -300,6 +300,11 @@ ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+ambient@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/ambient/-/ambient-0.0.1.tgz#21850289d3adfe4a8dfb492f7038689da911430c"
+  integrity sha512-1c/lZpBtWbmzOD7684itEED3cFxEQnfE+y/l7o/z5m2aB4oxufLCUUR0vGnDeA8tX+fTeD9wVfx1QOF5YHXfyA==
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
