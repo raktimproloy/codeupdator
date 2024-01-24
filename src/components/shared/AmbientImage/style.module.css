@@ -1,0 +1,30 @@
+.wrapper {
+    position: relative; /* Contains the absolute positioning */
+    /* box-shadow: inset 0 0 5rem 3.5rem rgb(0, 0, 0); */
+    box-shadow: inset 0rem 0rem 4rem 5.2rem #1d232a;
+  }
+  
+  .video,
+  .canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  
+  .canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-color: transparent; /* Set a transparent background */
+  }
+  
+  .video {
+    opacity: 0;
+    visibility: hidden;
+    padding: 7rem; /* Spacing to reveal the glow */
+  }
