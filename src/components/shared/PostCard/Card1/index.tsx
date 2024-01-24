@@ -4,7 +4,7 @@ import { CommentBox, SavePost, HeartEmpty, ShareBtn, ThreeDotVerticale } from '@
 
 function index() {
   return (
-    <div className="w-fit h-fit shadow rounded p-3">
+    <div className="w-fit h-fit shadow rounded p-3 home_news_feed_card">
           <div className="flex justify-between items-center space-x-5">
               <div className="flex items-center space-x-2">
                 <img

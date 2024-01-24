@@ -46,9 +46,9 @@ function Index() {
                     <li>
                         <details>
                         <summary className='text-base hover:bg-inherit active:text-red-500 hover:text-red-500'>Category</summary>
-                        <ul className="menu md:menu-horizontal md:min-w-max bg-base-400 rounded transform translate-x-[-43%] translate-y-[2px]" style={{padding:"2rem"}}>
-                            <li className='px-7'>
-                                <p className='text-xl font-bold menu-title'>Language</p>
+                        <ul className="menu md:menu-horizontal md:min-w-max bg-base-400 rounded transform translate-x-[-43%] translate-y-[2px]" style={{padding:"1rem"}}>
+                            <li className='pr-7'>
+                                <p className='text-lg font-bold menu-title'>Language</p>
                                 <ul>
                                 <li><Link href={"/category/javascript"}>Javascript</Link></li>
                                 <li><Link href={"/category/php"}>PHP</Link></li>
@@ -56,7 +56,7 @@ function Index() {
                                 </ul>
                             </li>
                             <li className='px-7'>
-                                <p className='text-xl font-bold menu-title'>Frontend</p>
+                                <p className='text-lg font-bold menu-title'>Frontend</p>
                                 <ul>
                                 <li><Link href={"/category/reactjs"}>ReactJs</Link></li>
                                 <li><Link href={"/category/nextjs"}>NextJs</Link></li>
@@ -64,7 +64,7 @@ function Index() {
                                 </ul>
                             </li>
                             <li className='px-7'>
-                                <p className='text-xl font-bold menu-title'>Backend</p>
+                                <p className='text-lg font-bold menu-title'>Backend</p>
                                 <ul>
                                 <li><Link href={"/category/laravel"}>Laravel</Link></li>
                                 <li><Link href={"/category/nodejs"}>NodeJs</Link></li>
