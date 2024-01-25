@@ -35,7 +35,7 @@ function Index() {
 
   return (
     <section className={`${Styles.wrapper}`}>
-      <img src="/car2.jpg" className={`${Styles.video}`} alt="" id="js-video" />
+      <img src="https://img.freepik.com/free-photo/abstract-uv-ultraviolet-light-composition_23-2149243966.jpg" className={`${Styles.video}`} alt="" id="js-video" />
       <canvas width="10" height="8" className={`${Styles.canvas}`} aria-hidden="true" id="js-canvas"></canvas>
     </section>
   );

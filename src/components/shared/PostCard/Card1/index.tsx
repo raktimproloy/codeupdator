@@ -43,7 +43,7 @@ function index() {
           </div>
           <div className="my-5">
           <div className="group bg-gray-800 text-gray-200 rounded-sm text-4xl text-center overflow-hidden relative">
-  <img src="/car2.jpg" alt="" className="" />
+  <img src="https://img.freepik.com/free-photo/abstract-uv-ultraviolet-light-composition_23-2149243966.jpg" alt="" className="" />
   <div className="absolute inset-0 flex items-center justify-center">
       <span className="text-white">Your Text Here</span>
   </div>
