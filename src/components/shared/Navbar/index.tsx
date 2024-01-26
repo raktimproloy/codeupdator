@@ -13,10 +13,8 @@ import DefaultProfileImage from "/public/images/default-profile.png";
 function Index() {
     const [theme, setTheme] = useState("")
     useEffect(() => {
-        var htmlElement = document.documentElement;
         const localTheme = localStorage.getItem("_theme") || "light"
         setTheme(localTheme)
-        htmlElement.setAttribute("data-theme", localTheme);
     }, [])
 
     const handleTheme = (e: any) => {
