@@ -1,9 +1,9 @@
 import React from 'react'
-import AboutPage from "@/components/pages/About"
+import TermsPage from "@/components/pages/TermsAndConditions"
 
 function page() {
   return (
-    <AboutPage/>
+    <TermsPage/>
   )
 }
 

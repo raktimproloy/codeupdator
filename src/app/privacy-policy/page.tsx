@@ -1,9 +1,9 @@
 import React from 'react'
-import AboutPage from "@/components/pages/About"
+import PrivacyPage from "@/components/pages/PrivacyPolicy"
 
 function page() {
   return (
-    <AboutPage/>
+    <PrivacyPage/>
   )
 }
 

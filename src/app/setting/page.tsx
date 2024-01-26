@@ -1,9 +1,9 @@
 import React from 'react'
-import AboutPage from "@/components/pages/About"
+import SettingPage from "@/components/pages/Setting"
 
 function page() {
   return (
-    <AboutPage/>
+    <SettingPage/>
   )
 }
 
