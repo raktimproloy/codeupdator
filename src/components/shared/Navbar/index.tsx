@@ -73,7 +73,7 @@ function Index() {
                         </details>
                     </li>
                     <li><Link href={"/problem"} className='text-base hover:bg-inherit hover:text-red-500'>Problem</Link></li>
-                    <li><Link href={"/toprated"} className='text-base hover:bg-inherit hover:text-red-500'>Top Rated</Link></li>
+                    <li><Link href={"/top-rated"} className='text-base hover:bg-inherit hover:text-red-500'>Top Rated</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
@@ -107,12 +107,12 @@ function Index() {
                             </div>
                             </div>
                             <li className='mt-2'>
-                            <a className="justify-between">
+                            <Link href={"/profile/me"} className="justify-between">
                                 Profile
-                            </a>
+                            </Link>
                             </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><Link href={"/setting"}>Settings</Link></li>
+                            <li><Link href={"/"}>Logout</Link></li>
                         </ul>
                     </div>
                 </div>

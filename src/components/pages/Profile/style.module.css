@@ -1,0 +1,45 @@
+.pictureEdit {
+    position: relative;
+    cursor: pointer;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.pictureEdit .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pictureEdit:hover .overlay {
+    color: rgba(255, 255, 255, 0.781);
+    opacity: 1;
+}
+
+.editButton {
+    background-color: #fff; /* Adjust the color as needed */
+    color: #000; /* Adjust the color as needed */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+
+
+
