@@ -36,12 +36,10 @@ summary:active{
   /* box-shadow: 0 0 100px rgba(222, 31, 31, 0.1); */
 }
 
+[data-theme="light"] .signup_notice, .top_rated_username {
+  color: #6b6d71;
+}
 
-
-
-
-/* .max-h-select {
-    max-height: 300px;
-} */
-
-
+[data-theme="dark"] .top_rated_username {
+  color: rgb(156, 155, 155);
+}

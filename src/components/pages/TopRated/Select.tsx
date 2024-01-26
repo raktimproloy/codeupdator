@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
+import Styles from "./style.module.css"
 
 
 function Select() {
@@ -80,23 +81,9 @@ function Select() {
         };
     }, [selectRef]);
 
-    // // Modify handleSelect function to trigger the animation
-    // const handleSelect = (value: string) => {
-    //     // ... (existing code)
-    
-    //     // Set showAddedCard to true to trigger the animation
-    //     setShowAddedCard(true);
-    
-    //     // Reset showAddedCard after the animation duration (e.g., 1000ms)
-    //     setTimeout(() => {
-    //     setShowAddedCard(false);
-    //     }, 1000);
-    // };
-      
-
   return (
     <div className="w-full flex flex-col items-center mx-auto" ref={selectRef}>
-        <div className="w-full px-4">
+        <div className="w-full">
             <div className="flex flex-col items-center relative">
                 <div className="w-full svelte-1l8159u">
                     <div className="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
@@ -104,7 +91,7 @@ function Select() {
                             {/* Selected Card */}
                             {
                             selected.map((select: {value: string, label: string}, index:number) =>
-                            <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-teal-700 bg-teal-100 border border-teal-300 ${showAddedCard ? 'fade-in' : ''}`} key={index}>
+                            <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded text-teal-700 bg-teal-100 border border-teal-300 ${Styles.fade_in}`} key={index}>
                                 <div className="text-xs font-normal leading-none max-w-full flex-initial">{select.label}</div>
                                 <div className="flex flex-auto flex-row-reverse">
                                     <div onClick={() => handleRemove(select.value)}>
