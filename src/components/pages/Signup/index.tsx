@@ -9,12 +9,12 @@ import React from 'react'
 function index() {
   return (
     <div className='flex justify-center items-center h-screen -mt-20'>
-      <div className="card w-1/2 bg-base-100 shadow p-5 rounded">
+      <div className="card md:max-w-2/3 bg-base-100 shadow p-5 rounded">
         <div className='flex justify-center items-center space-x-2 text-2xl'>
-            <div className='text-gray-600'>
+            <div>
                <Signup/>
             </div>
-            <h1 className='font-semibold text-gray-600'>
+            <h1 className='font-semibold'>
               Signup
             </h1>
         </div>
