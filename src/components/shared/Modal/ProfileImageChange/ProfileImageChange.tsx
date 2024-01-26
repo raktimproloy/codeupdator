@@ -5,7 +5,7 @@ function ProfileImageChange() {
     <>
     <input type="checkbox" id="my_modal_6" className="modal-toggle" />
     <div className="modal cursor-default" role="dialog">
-    <div className="modal-box">
+    <div className="modal-box rounded">
     <div className="modal-action">
         <label htmlFor="my_modal_6" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
             ✕
