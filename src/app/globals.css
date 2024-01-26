@@ -35,3 +35,11 @@ summary:active{
   background-color: rgb(255, 255, 255);
   /* box-shadow: 0 0 100px rgba(222, 31, 31, 0.1); */
 }
+
+[data-theme="light"] .signup_notice, .top_rated_username {
+  color: #6b6d71;
+}
+
+[data-theme="dark"] .top_rated_username {
+  color: rgb(156, 155, 155);
+}
