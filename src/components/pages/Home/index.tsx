@@ -13,7 +13,17 @@ function index() {
         </div>
 
         {/* Right Section */}
+<<<<<<< HEAD
+        <div className="w-2/6">
+        <div className="hidden md:flex items-center border-t border-gray-500">
+          <Footer/>
+        </div>
+        </div>
+
+
+=======
         <RightSection/>
+>>>>>>> 59606ef7914a07d1c27290cb294607ad78ec8b7f
       </div>
     </>
   );

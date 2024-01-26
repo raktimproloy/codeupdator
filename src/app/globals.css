@@ -28,3 +28,10 @@ summary:active{
   border-color: rgba(0, 0, 0, 0.067);
   /* box-shadow: 0 0 100px rgba(222, 31, 31, 0.1); */
 }
+
+[data-theme="light"] .home_news_feed_card {
+  border-width: 1px;
+  box-shadow: white;
+  background-color: rgb(255, 255, 255);
+  /* box-shadow: 0 0 100px rgba(222, 31, 31, 0.1); */
+}
