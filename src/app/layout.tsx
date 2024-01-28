@@ -1,7 +1,6 @@
 // import type { Metadata } from 'next'
 import { PT_Sans } from 'next/font/google'
 import Navbar from "@/components/shared/Navbar"
-import Footer from "@/components/shared/Footer"
 import './globals.css'
 
 const pt_sans = PT_Sans({ weight: ['400', "700"], subsets: ['cyrillic'] })
