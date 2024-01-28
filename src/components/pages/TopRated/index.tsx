@@ -1,6 +1,7 @@
 import React from 'react'
 import ListCard from './ListCard'
 import Filter from './Filter'
+import TopRatedPlaceholder from "@/components/shared/Placeholder/TopRatedPlaceholder"
 
 function index() {
   return (
@@ -11,25 +12,7 @@ function index() {
           <ListCard/>
           <ListCard/>
           <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
-          <ListCard/>
+          <TopRatedPlaceholder/>
       </div>
       </div>
     </>

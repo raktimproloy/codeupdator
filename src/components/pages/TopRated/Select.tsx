@@ -86,7 +86,7 @@ function Select() {
         <div className="w-full">
             <div className="flex flex-col items-center relative">
                 <div className="w-full svelte-1l8159u">
-                    <div className="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
+                    <div className="my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                         <div className="flex flex-auto flex-wrap">
                             {/* Selected Card */}
                             {
