@@ -2,6 +2,7 @@ import React from 'react'
 import Styles from "./style.module.css"
 import { CommentBox, SavePost, HeartEmpty, ShareBtn, ThreeDotVerticale } from '@/store/icons/Icons'
 import AmbientImage from "@/components/shared/AmbientImage"
+import DropDown from './DropDown'
 
 function index() {
   return (
@@ -20,17 +21,7 @@ function index() {
                 <span className="text-xs">19 Nov 2023</span>
               </div>
             </div>
-            <div className="dropdown dropdown-bottom dropdown-end">
-              <div tabIndex={0} role="button" className="m-1">
-                <div className="w-5 h-5 cursor-pointer" title="More">
-                  <ThreeDotVerticale/>
-                </div>
-              </div>
-              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
-              </ul>
-            </div>
+            <DropDown/>
             
         </div>
         <div className="flex flex-col">

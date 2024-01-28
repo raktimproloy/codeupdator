@@ -1,6 +1,5 @@
 import React from "react";
 import Card1 from "@/components/shared/PostCard/Card1";
-import Footer from "@/components/shared/Footer";
 import RightSection from "@/components/shared/RightSection/RightSection";
 
 function index() {

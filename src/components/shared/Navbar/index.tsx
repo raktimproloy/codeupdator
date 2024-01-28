@@ -13,6 +13,7 @@ import DefaultProfileImage from "/public/images/default-profile.png";
 function Index() {
     const [theme, setTheme] = useState("")
     const detailsRef = useRef<HTMLDetailsElement | null>(null);
+    const profileRef = useRef<HTMLDetailsElement | null>(null);
     useEffect(() => {
         const localTheme = localStorage.getItem("_theme") || "light"
         setTheme(localTheme)
@@ -30,6 +31,10 @@ function Index() {
         if (detailsRef.current && !detailsRef.current.contains(event.target as Node)) {
           // Clicked outside the details tag, close it
           detailsRef.current.removeAttribute('open');
+        }
+        if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+            // Clicked outside the details tag, close it
+            profileRef.current.removeAttribute('open');
         }
       };
     
@@ -102,7 +107,43 @@ function Index() {
                     {/* Desktop menu */}
                     <Search />
                     <div className="dropdown dropdown-end ml-5 bg-gray-800 rounded-full hidden md:block">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+
+                    <details ref={profileRef}>
+                        <summary className='btn btn-ghost btn-circle avatar'>
+                        <div className="w-9 rounded-full">
+                            <Image
+                                className="w-9 h-9 rounded-full"
+                                src={DefaultProfileImage}
+                                width={100}
+                                height={100}
+                                alt="profile"
+                            />
+                        </div>
+                        </summary>
+                        <ul className={`mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded w-52`}>
+                            <div className='pb-4 px-3'>
+                            <div className="flex justify-between">
+                                Theme
+                                <span className="badge">
+                                <input
+                                    type="checkbox"
+                                    className="toggle"
+                                    checked={theme === "light"}
+                                    onChange={(e) => handleTheme(e)}
+                                />
+                                </span>
+                            </div>
+                            </div>
+                            <li className='mt-2' onClick={handleLinkClick}>
+                            <Link href={"/profile/me"} className="justify-between">
+                                Profile
+                            </Link>
+                            </li>
+                            <li onClick={handleLinkClick}><Link href={"/setting"}>Settings</Link></li>
+                            <li onClick={handleLinkClick}><Link href={"/"}>Logout</Link></li>
+                        </ul>
+                    </details>
+                        {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-9 rounded-full">
                                 <Image
                                     className="w-9 h-9 rounded-full"
@@ -113,7 +154,7 @@ function Index() {
                                 />
                             </div>
                         </div>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded w-52">
+                        <ul tabIndex={0} className={`mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded w-52`}>
                             <div className='pb-4 px-3'>
                             <div className="flex justify-between">
                                 Theme
@@ -134,7 +175,7 @@ function Index() {
                             </li>
                             <li><Link href={"/setting"}>Settings</Link></li>
                             <li><Link href={"/"}>Logout</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>
