@@ -19,8 +19,8 @@ function index() {
                 <div className="stat-title text-xl">Interest</div>
                 <div className="stat-value">12k</div>
               </div>
-              <select className="select select-bordered w-full w-60">
-                <option disabled selected>Choose Version</option>
+              <select className="select select-bordered w-2/4">
+                <option disabled >Choose Version</option>
                 <option>21.2.0</option>
                 <option>21.1.0</option>
                 <option>20.8.1</option>

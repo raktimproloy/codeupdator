@@ -1,12 +1,15 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Top_rated from '../Card/Top_rated';
 import Button from './Button';
 import HalfFooter from '../Footer/HalfFooter';
+import Styles from "./style.module.css"
 
 function RightSection() {
+
   return (
-    <div className="w-2/6 hidden md:block">
-          <div  className="fixed top-26 w-[23.5rem] h-[20rem]">
+    <div className={`w-2/6 hidden md:block`}>
+          <div  className={`fixed top-26 w-[23.5rem] h-[33rem] overflow-y-scroll overflow-x-hidden ${Styles.scrollbar}`}>
           <div className="card w-96 shadow rounded">
           <div className="card-body p-4">
             <h2 className="card-title">Code Bliss Awaits! Join Now.</h2>
