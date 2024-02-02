@@ -52,6 +52,10 @@ function Index() {
         // Stop propagation to prevent closing details when clicking on links
         detailsRef.current?.removeAttribute('open');
       };
+      const handleProfileClick = (event: React.MouseEvent) => {
+        // Stop propagation to prevent closing Profile when clicking on links
+        profileRef.current?.removeAttribute('open');
+      }
   return (
     <>
         <div className='shadow-md fixed top-0 z-10 w-full bg-base-100'>
@@ -134,13 +138,15 @@ function Index() {
                                 </span>
                             </div>
                             </div>
-                            <li className='mt-2' onClick={handleLinkClick}>
+                            <li className='mt-2' onClick={handleProfileClick}>
                             <Link href={"/profile/me"} className="justify-between">
                                 Profile
                             </Link>
                             </li>
-                            <li onClick={handleLinkClick}><Link href={"/setting"}>Settings</Link></li>
-                            <li onClick={handleLinkClick}><Link href={"/"}>Logout</Link></li>
+                            <li onClick={handleProfileClick}><Link href={"/setting"}>Settings</Link></li>
+                            <li onClick={handleProfileClick}><Link href={"/"}>Logout</Link></li>
+                            <li onClick={handleProfileClick}><Link href={"/login"}>Login</Link></li>
+                            <li onClick={handleProfileClick}><Link href={"/signup"}>Signup</Link></li>
                         </ul>
                     </details>
                         {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
