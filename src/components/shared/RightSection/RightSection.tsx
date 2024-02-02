@@ -9,7 +9,7 @@ function RightSection() {
 
   return (
     <div className={`w-2/6 hidden md:block`}>
-          <div  className={`fixed top-26 w-[23.5rem] h-[33rem] overflow-y-scroll overflow-x-hidden ${Styles.scrollbar}`}>
+          <div  className={`fixed top-26 w-[23.5rem] h-[70vh] overflow-y-scroll overflow-x-hidden ${Styles.scrollbar}`}>
           <div className="card w-96 shadow rounded">
           <div className="card-body p-4">
             <h2 className="card-title">Code Bliss Awaits! Join Now.</h2>
