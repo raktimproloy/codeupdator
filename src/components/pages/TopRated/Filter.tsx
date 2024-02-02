@@ -30,23 +30,21 @@ function Filter() {
         <button className="btn">Reset Filter</button>
       </div>
 
-      <div>
-        <div className="flex w-full gap-4 mt-4">
-          <div className='w-1/4'>
-            <span className="label-text">Country</span>
-            <select className="select select-bordered w-full max-w-xs mt-1">
+        <div className="block md:flex w-full gap-4 mt-4">
+          <div className='w-full md:w-1/4'>
+            <span className="label-text block md:inline">Country</span>
+            <select className="select select-bordered w-full md:max-w-xs mt-1">
               <option disabled value="default" className='py-2'>Select Country</option>
               <option value="bangladesh" className='py-2'>Bangladesh</option>
               <option value="india" className='py-2'>India</option>
               <option value="pakistan" className='py-2'>Pakistan</option>
             </select>
           </div>
-          <div className='w-3/4'>
+          <div className='w-full md:w-3/4'>
             <span className="label-text">Interest</span>
             <Select/>
           </div>
         </div>
-      </div>
     </div>
     </>
   )
