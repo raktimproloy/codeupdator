@@ -10,6 +10,109 @@ import MobileMenu from './MobileMenu';
 import Logo from "/public/images/logo.svg";
 import DefaultProfileImage from "/public/images/default-profile.png";
 
+
+const megaMenu  =[
+    {
+        menu_name: "Language",
+        order:"2",
+        items:[
+            {
+                title: "Javascript",
+                slug: "javascript",
+                order: "0"
+            },
+            {
+                title: "PHP",
+                slug: "php",
+                order: "1"
+            },
+            {
+                title: "Python",
+                slug: "python",
+                order: "2"
+            },
+            
+        ]
+    },
+    {
+        menu_name: "Frontend",
+        order:"1",
+        items:[
+            {
+                title: "ReactJs",
+                slug: "reactjs",
+                order: "0"
+            },
+            {
+                title: "NextJs",
+                slug: "nextjs",
+                order: "2"
+            },
+            {
+                title: "VueJs",
+                slug: "vuejs",
+                order: "1"
+            },
+            
+        ]
+    },
+    {
+        menu_name: "Backend",
+        order:"3",
+        items:[
+            {
+                title: "Laravel",
+                slug: "laravel",
+                order: "0"
+            },
+            {
+                title: "NodeJs",
+                slug: "nodejs",
+                order: "1"
+            },
+            
+        ]
+    },
+    {
+        menu_name: "Database",
+        order:"4",
+        items:[
+            {
+                title: "MongoDB",
+                slug: "mongodb",
+                order: "0"
+            },
+            {
+                title: "MySQL",
+                slug: "mysql",
+                order: "1"
+            },
+            
+        ]
+    },
+    {
+        menu_name: "Package",
+        order:"5",
+        items:[
+            {
+                title: "Bootstrap",
+                slug: "bootstrap",
+                order: "0"
+            },
+            {
+                title: "Tailwind",
+                slug: "tailwind",
+                order: "1"
+            },
+            {
+                title: "SASS",
+                slug: "sass",
+                order: "2"
+            },
+        ]
+    }
+]
+
 function Index() {
     const [theme, setTheme] = useState("")
     const detailsRef = useRef<HTMLDetailsElement | null>(null);
@@ -36,26 +139,26 @@ function Index() {
             // Clicked outside the details tag, close it
             profileRef.current.removeAttribute('open');
         }
-      };
-    
-      useEffect(() => {
-        // Add event listener on mount
-        document.addEventListener('click', handleClickOutside);
-    
-        // Clean up the event listener on unmount
-        return () => {
-          document.removeEventListener('click', handleClickOutside);
-        };
-      }, []);
+    };
 
-      const handleLinkClick = (event: React.MouseEvent) => {
-        // Stop propagation to prevent closing details when clicking on links
-        detailsRef.current?.removeAttribute('open');
-      };
-      const handleProfileClick = (event: React.MouseEvent) => {
-        // Stop propagation to prevent closing Profile when clicking on links
-        profileRef.current?.removeAttribute('open');
-      }
+    useEffect(() => {
+    // Add event listener on mount
+    document.addEventListener('click', handleClickOutside);
+
+    // Clean up the event listener on unmount
+    return () => {
+        document.removeEventListener('click', handleClickOutside);
+    };
+    }, []);
+
+    const handleLinkClick = (event: React.MouseEvent) => {
+    // Stop propagation to prevent closing details when clicking on links
+    detailsRef.current?.removeAttribute('open');
+    };
+    const handleProfileClick = (event: React.MouseEvent) => {
+    // Stop propagation to prevent closing Profile when clicking on links
+    profileRef.current?.removeAttribute('open');
+    }
   return (
     <>
         <div className='shadow-md fixed top-0 z-10 w-full bg-base-100'>
@@ -74,30 +177,21 @@ function Index() {
                     <li>
                         <details ref={detailsRef}>
                             <summary className='text-base hover:bg-inherit active:text-red-500 hover:text-red-500'>Category</summary>
-                            <ul className="menu md:menu-horizontal md:min-w-max bg-base-400 rounded transform translate-x-[-43%] translate-y-[2px]" style={{padding:"1rem"}}>
-                                <li className='pr-7'>
-                                    <p className='text-lg font-bold menu-title'>Language</p>
-                                    <ul>
-                                    <li onClick={handleLinkClick}><Link href={"/category/javascript"}>Javascript</Link></li>
-                                    <li onClick={handleLinkClick}><Link href={"/category/php"}>PHP</Link></li>
-                                    <li onClick={handleLinkClick}><Link href={"/category/python"}>Python</Link></li>
-                                    </ul>
-                                </li>
-                                <li className='px-7'>
-                                    <p className='text-lg font-bold menu-title'>Frontend</p>
-                                    <ul>
-                                    <li onClick={handleLinkClick}><Link href={"/category/reactjs"}>ReactJs</Link></li>
-                                    <li onClick={handleLinkClick}><Link href={"/category/nextjs"}>NextJs</Link></li>
-                                    <li onClick={handleLinkClick}><Link href={"/category/vuejs"}>VueJs</Link></li>
-                                    </ul>
-                                </li>
-                                <li className='px-7'>
-                                    <p className='text-lg font-bold menu-title'>Backend</p>
-                                    <ul>
-                                    <li onClick={handleLinkClick}><Link href={"/category/laravel"}>Laravel</Link></li>
-                                    <li onClick={handleLinkClick}><Link href={"/category/nodejs"}>NodeJs</Link></li>
-                                    </ul>
-                                </li>
+                            <ul className="menu px-5 grid grid-cols-4 gap-10 md:min-w-max bg-base-400 rounded transform translate-x-[-43%] translate-y-[2px]" style={{padding:"1.5rem 2rem"}}>
+                                {
+                                    megaMenu.map((item, index) => 
+                                        <li className={`order-${item.order}`} key={index}>
+                                            <p className='text-2xl font-bold menu-title text-[#c7203e]'>{item.menu_name}</p>
+                                            <ul className='grid grid-rows'>
+                                                {
+                                                    item.items.map((child, index) => 
+                                                    <li onClick={handleLinkClick} key={index} className={`order-${child.order}`}><Link href={`/category/${child.slug}`} className='text-lg'>{child.title}</Link></li>
+                                                    )
+                                                }
+                                            </ul>
+                                        </li>
+                                    )
+                                }
                             </ul>
             
                         </details>
