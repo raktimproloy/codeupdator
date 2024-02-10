@@ -1,20 +1,29 @@
 import React from 'react'
+import Image from 'next/image'
 import Styles from "./style.module.css"
 import { CommentBox, SavePost, HeartEmpty, ShareBtn, ThreeDotVerticale } from '@/store/icons/Icons'
 import AmbientImage from "@/components/shared/AmbientImage"
 import DropDown from './DropDown'
+import { count } from 'console'
 
-function index() {
+interface PropsType {
+  count: number
+}
+
+
+function index({count}: PropsType) {
+  const imageSrc="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"
   return (
-        <div className={`w-fit h-fit shadow rounded p-3 home_news_feed_card ${Styles.card}`}>
+        <div className={`w-fit h-fit shadow rounded p-3 home_news_feed_card my-5 ${Styles.card}`}>
           <div className={Styles.ambient}>
-            <AmbientImage/>
+            <AmbientImage imageSrc={imageSrc} count={count} />
           </div>
         <div className="flex justify-between items-center space-x-5">
             <div className="flex items-center space-x-2">
-              <img
-                src="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"
-                className="w-9 h-9 rounded-full object-cover"
+              <Image
+                src={imageSrc}
+                className="w-9 h-9 rounded-full object-cover" width={500} height={500}
+                alt='card'
               />
               <div className="font-semibold flex flex-col  justify-center">
                 <span>Getintocode</span>
