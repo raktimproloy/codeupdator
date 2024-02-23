@@ -31,7 +31,7 @@ function index() {
         </div>
       </div>
       {/* Left Section */}
-      <Card1 />
+      <Card1 count={1} />
     </div>
 
     {/* Right Section */}

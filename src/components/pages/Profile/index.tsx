@@ -49,7 +49,7 @@ function index({id}: PropsData) {
             </div>
         </div>
         <div className='col-span-2'>
-            <Card1/>
+            <Card1 count={1}/>
         </div>
         <div className='col-span-1 hidden md:block'>
             <Bio/>
