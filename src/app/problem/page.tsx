@@ -3,6 +3,7 @@ import ProblemPage from "@/components/pages/Problem"
 
 function page() {
   return (
+
     <ProblemPage/>
   )
 }
