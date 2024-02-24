@@ -1,10 +1,17 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { WorldIc, LockOnlyMe } from "@/store/icons/Icons"
 import Select from '@/components/shared/MultiSelect/Select'
+// import TinyMCE from "./TinyMCE";
+import dynamic from "next/dynamic";
+const TinyMCE = dynamic(() => import('./TinyMCE'), {
+    ssr: false
+  })
 
 
 function AddProblem() {
+    const [text, setText] = useState("")
+    const [value, setValue] = useState("<p>TinyMCE Editor text</p>")
     return <>
         <div className="card w-full bg-base-100 shadow-md rounded">
             <label htmlFor="create_a_problem" className="card-body cursor-pointer rounded">
@@ -30,17 +37,18 @@ function AddProblem() {
                             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" className="h-10 w-10 rounded-full" />
                             <div className="font-semibold flex flex-col">
                                 <span>Joshim Uddin</span>
-                                <div className="h-5 w-10">
-                                    <select className="select">
-                                        <option className="flex items-center">
+                                <div className="">
+                                    <select className="select select-bordered mt-1 min-h-0 h-7" defaultValue={"public"}>
+                                        <option value="public" className='py-2'>
                                             {/* <span className="text-gray-500"><WorldIc/></span> */}
-                                            <span>Public</span>
+                                            Public
                                         </option>
-                                        <option className="flex items-center">
+                                        <option value="private" className='py-2'>
                                             {/* <span className="text-gray-500"><LockOnlyMe/></span> */}
-                                            <span>Only me</span>
+                                            Private
                                         </option>
                                     </select>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -53,7 +61,8 @@ function AddProblem() {
 
 
                     <div className="mt-5">
-                        <textarea className="textarea textarea-bordered w-full resize-none" placeholder="Write your problem here......"></textarea>
+                        {/* <textarea className="textarea textarea-bordered w-full resize-none" placeholder="Write your problem here......"></textarea> */}
+                        <TinyMCE text={text} setText={setText} value={value} setValue={setValue}/>
                     </div>
 
                     <button type="submit" className="btn btn-primary w-fit rounded my-2">Create</button>

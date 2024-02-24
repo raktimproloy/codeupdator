@@ -91,11 +91,11 @@ function Select() {
                             {/* Selected Card */}
                             {
                             selected.map((select: {value: string, label: string}, index:number) =>
-                            <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded text-teal-700 bg-teal-100 border border-teal-300 ${Styles.fade_in}`} key={index}>
+                            <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded text-[#c7203e] bg-teal-100 border border-[#c7203e] ${Styles.fade_in}`} key={index}>
                                 <div className="text-xs font-normal leading-none max-w-full flex-initial">{select.label}</div>
                                 <div className="flex flex-auto flex-row-reverse">
                                     <div onClick={() => handleRemove(select.value)}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x cursor-pointer hover:text-teal-400 rounded-full w-4 h-4 ml-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x cursor-pointer hover:text-[#c7203e] rounded-full w-4 h-4 ml-2">
                                             <line x1="18" y1="6" x2="6" y2="18"></line>
                                             <line x1="6" y1="6" x2="18" y2="18"></line>
                                         </svg>
@@ -124,8 +124,8 @@ function Select() {
                         {/* Option Card */}
                         {
                             options.map((option: {value: string, label: string, selected: boolean}, index:number) => 
-                            <div className="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-teal-100" key={index} onClick={() => handleSelectOption(option.value)}>
-                                <div className={`flex w-full items-center p-2 pl-2 border-l-2 relative hover:border-teal-100 ${option.selected ? "border-l-4 border-teal-600 hover:border-teal-600" : "border-l-4 border-teal-600 border-transparent"}`}>
+                            <div className="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-[#c7203e]" key={index} onClick={() => handleSelectOption(option.value)}>
+                                <div className={`flex w-full items-center p-2 pl-2 border-l-2 relative hover:border-[#c7203e] ${option.selected ? "border-l-4 border-[#c7203e] hover:border-[#c7203e]" : "border-l-4 border-teal-600 border-transparent"}`}>
                                     <div className="w-full items-center flex">
                                         <div className="mx-2 leading-6">{option?.label}</div>
                                     </div>
