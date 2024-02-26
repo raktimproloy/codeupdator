@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-function Quill({text, setText, value, setValue}:any) {
+function Quill({value, setValue}:any) {
     const toolbarOptions = [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       ['blockquote', 'code-block'],
-      ['link', 'image', 'video', 'formula'],
+      // ['link', 'image', 'video', 'formula'],
     
       [{ 'header': 1 }, { 'header': 2 }],               // custom button values
       [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
@@ -18,21 +18,18 @@ function Quill({text, setText, value, setValue}:any) {
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
     
       [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-      [{ 'font': [] }],
+      // [{ 'font': [] }],
       [{ 'align': [] }],
     
-      ['clean']                                         // remove formatting button
+      // ['clean']                                         // remove formatting button
     ];
 
     const modules = {
       toolbar: toolbarOptions
     }
-    useEffect(() => {
-        console.log(value)
-      }, [value])
   return (
-    <div className='bg-white'>
-        <ReactQuill modules={modules} theme="snow" value={value} onChange={setValue} />
+    <div className='mb-[5rem]'>
+        <ReactQuill modules={modules} placeholder={"Write you problem..."} theme="snow" value={value} onChange={setValue} style={{height: "30rem"}} />
     </div>
   )
 }

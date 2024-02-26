@@ -66,3 +66,15 @@ body::-webkit-scrollbar-thumb
 [data-theme="dark"] .top_rated_username {
   color: rgb(156, 155, 155);
 }
+
+[data-theme="dark"] .ql-snow .ql-stroke{
+  stroke: #a6adbb !important;
+}
+
+[data-theme="dark"] .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill{
+  fill: #a6adbb !important;
+}
+
+[data-theme="dark"] .ql-toolbar.ql-snow .ql-picker-label{
+  color: #a6adbb;
+}
