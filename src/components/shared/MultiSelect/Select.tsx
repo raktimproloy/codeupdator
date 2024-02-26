@@ -124,7 +124,7 @@ function Select() {
                         {/* Option Card */}
                         {
                             options.map((option: {value: string, label: string, selected: boolean}, index:number) => 
-                            <div className="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-[#c7203e]" key={index} onClick={() => handleSelectOption(option.value)}>
+                            <div className="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-50" key={index} onClick={() => handleSelectOption(option.value)}>
                                 <div className={`flex w-full items-center p-2 pl-2 border-l-2 relative hover:border-[#c7203e] ${option.selected ? "border-l-4 border-[#c7203e] hover:border-[#c7203e]" : "border-l-4 border-teal-600 border-transparent"}`}>
                                     <div className="w-full items-center flex">
                                         <div className="mx-2 leading-6">{option?.label}</div>
