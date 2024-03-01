@@ -3,8 +3,9 @@ import Card1 from "@/components/shared/PostCard/Card1"
 import Bio from '@/components/shared/Profile/Bio'
 import Image from 'next/image'
 import Styles from "./style.module.css"
-import { ImageEdit } from '@/store/icons/Icons'
+import { ImageEdit, Edit } from '@/store/icons/Icons'
 import ProfileImageChange from '@/components/shared/Modal/ProfileImageChange/ProfileImageChange'
+import Link from 'next/link'
 
 
 interface PropsData{
@@ -30,8 +31,15 @@ function index({id}: PropsData) {
                 </div>
             </div>
             </div>
-            <h1 className='font-bold text-2xl'>Joshim Uddin</h1>
-            <p>@joshim_laravelest</p>
+            <div className='text-2xl flex justify-between'>
+                <span className='font-bold'>Joshim Uddin</span>
+                <div className='text-gray-500 cursor-pointer'>
+                    <Link href='/setting'>
+                    <Edit/>
+                    </Link>
+                </div>
+            </div>
+            <p className='font-semibold text-gray-500'>@joshim_laravelest</p>
             <a href='/'>joshim.bot.xyz</a>
         </div>
 
