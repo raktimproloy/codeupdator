@@ -7,7 +7,6 @@ import { ImageEdit, Edit } from '@/store/icons/Icons'
 import ProfileImageChange from '@/components/shared/Modal/ProfileImageChange/ProfileImageChange'
 import Link from 'next/link'
 
-
 interface PropsData{
     id: string
 }
