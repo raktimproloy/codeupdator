@@ -15,7 +15,7 @@ function MobileMenu() {
         <Link href={"/top-rated"} className={`flex justify-center border-r ${Styles.iconStyle}`}>
             <Problem/>
         </Link>
-        <Link href={"/about"} className={`flex justify-center border-r ${Styles.iconStyle}`}>
+        <Link href={"/login"} className={`flex justify-center border-r ${Styles.iconStyle}`}>
             <About/>
         </Link>
         <Link href={"/contact"} className={`flex justify-center ${Styles.iconStyle}`}>
