@@ -2,6 +2,10 @@
 import { PT_Sans } from 'next/font/google'
 import Navbar from "@/components/shared/Navbar"
 import './globals.css'
+import Authprovider from './component/Authprovider/Authprovider'
+import { Suspense } from 'react'
+import Loading from '@/components/shared/Loading/Loading'
+import { StoreProvider } from "@/store/redux/StoreProvider";
 
 const pt_sans = PT_Sans({ weight: ['400', "700"], subsets: ['cyrillic'] })
 
@@ -25,13 +29,16 @@ export default function RootLayout({
       {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" /> */}
       </head>
       <body className={pt_sans.className} suppressHydrationWarning={true}>
-        {/* {!pathname.includes("login") && <Navbar/>} */}
+      <Suspense fallback={<Loading/>}>
+      <StoreProvider>
          <Navbar/>
         <div className='w-full mt-[75px]'>
-          {children}
+          <Authprovider>
+            {children}
+          </Authprovider>
         </div>
-        {/* {!pathname.includes("login") && <Footer/>} */}
-        {/* <Footer/> */}
+      </StoreProvider>
+      </Suspense>
         
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
       </body>

@@ -19,7 +19,7 @@ function Index({imageSrc, count}:IndexProps) {
   }, [])
 
   useEffect(() => {
-      const img:any = document.getElementById("js-video");
+      const img:any = document.getElementById(`js-video${count}`);
       const canvas:any = document.getElementById(`js-canvas${count}`);
       const ctx = canvas.getContext("2d");
   
@@ -37,6 +37,7 @@ function Index({imageSrc, count}:IndexProps) {
         img.removeEventListener("load", draw);
       };
   
+
       window.addEventListener("load", init);
       window.addEventListener("unload", cleanup);
   
@@ -47,7 +48,7 @@ function Index({imageSrc, count}:IndexProps) {
 
   return (
     <section className={`${Styles.wrapper} ${theme === "light" ? "hidden" : "block"}`}>
-      <Image src={`${imageSrc}`} className={`${Styles.video}`} id="js-video" width={500} height={500}
+      <Image src={`${imageSrc}`} className={`${Styles.video}`} id={`js-video${count}`} width={1000} height={1000}
       alt='card' />
       <canvas width="10" height="8" className={`${Styles.canvas}`} aria-hidden="true" id={`js-canvas${count}`}></canvas>
     </section>

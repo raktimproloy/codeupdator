@@ -9,7 +9,9 @@ const Quill = dynamic(() => import('./Quill'), {
 const ImageUpload = dynamic(() => import('./ImageUpload'), {
     ssr: false
 })
-
+const MultiSelect = dynamic(() => import('@/components/shared/MultiSelect/Select'), {
+    ssr: false
+})
 
 
 function AddProblem() {
@@ -25,6 +27,9 @@ function AddProblem() {
                     </div>
                 </div>
             </label>
+            <div className="px-8">
+                <MultiSelect/>
+            </div>
         </div>
 
 
