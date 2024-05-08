@@ -9,6 +9,9 @@ import MobileMenu from './MobileMenu';
 
 import Logo from "/public/images/logo.svg";
 import DefaultProfileImage from "/public/images/default-profile.png";
+import { AuthFunc } from '@/utils/Auth';
+import { useCookies } from 'react-cookie';
+import { signOut } from 'next-auth/react';
 
 
 const megaMenu  =[
@@ -114,6 +117,8 @@ const megaMenu  =[
 ]
 
 function Index() {
+    const [cookie, setCookie, removeCookie] = useCookies()
+    const isAuth = AuthFunc();
     const [theme, setTheme] = useState("")
     const detailsRef = useRef<HTMLDetailsElement | null>(null);
     const profileRef = useRef<HTMLDetailsElement | null>(null);
@@ -158,6 +163,10 @@ function Index() {
     const handleProfileClick = (event: React.MouseEvent) => {
     // Stop propagation to prevent closing Profile when clicking on links
     profileRef.current?.removeAttribute('open');
+    }
+    const handleLogout = () => {
+        signOut()
+        removeCookie("_token",{path: "/"})
     }
   return (
     <>
@@ -232,15 +241,26 @@ function Index() {
                                 </span>
                             </div>
                             </div>
-                            <li className='mt-2' onClick={handleProfileClick}>
-                            <Link href={"/profile/me"} className="justify-between">
-                                Profile
-                            </Link>
-                            </li>
-                            <li onClick={handleProfileClick}><Link href={"/setting"}>Settings</Link></li>
-                            <li onClick={handleProfileClick}><Link href={"/"}>Logout</Link></li>
-                            <li onClick={handleProfileClick}><Link href={"/login"}>Login</Link></li>
-                            <li onClick={handleProfileClick}><Link href={"/signup"}>Signup</Link></li>
+                            {
+                                isAuth ? 
+                                <>
+                                <li className='mt-2' onClick={handleProfileClick}>
+                                <Link href={"/profile/me"} className="justify-between">
+                                    Profile
+                                </Link>
+                                </li>
+                                <li onClick={handleProfileClick}><Link href={"/setting"}>Settings</Link></li>
+                                <li onClick={(e) => {handleProfileClick(e); handleLogout();}}><Link href={"/"}>Logout</Link></li>
+                                </>
+
+                                :
+                                <>
+                                <li onClick={handleProfileClick}><Link href={"/login"}>Login</Link></li>
+                                <li onClick={handleProfileClick}><Link href={"/signup"}>Signup</Link></li>
+                                
+                                </>
+
+                            }
                         </ul>
                     </details>
                         {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
