@@ -1,0 +1,53 @@
+[
+    {
+        // user data
+        "id": 3,
+        "name": "raktim"
+    },
+    
+    {
+        // Post data
+        "id": 5,
+        "comments_id": ["1", "2", "8"]
+    },
+
+
+
+    // Comment data
+    {
+        "id": 1,
+        "post_id": 5,
+        "user_id": 3,
+        "like_count": 10,
+        "dislike_count": 3,
+        "main_comment": "This is First Comment",
+        "reply":[
+            {
+                "user_id": 100,
+                "like_count": 3,
+                "dislike_count": 8,
+                "reply_text": "This is Reply Test",
+                "reply":[
+                    {
+                        "user_id": 100,
+                        "like_count": 3,
+                        "dislike_count": 8,
+                        "reply_text": "This is Reply Test",
+                    },
+                    {
+                        "user_id": 130,
+                        "like_count": 3,
+                        "dislike_count": 8,
+                        "reply_text": "This is Reply Test 2"
+                    }
+                ]
+            },
+            {
+                "user_id": 130,
+                "like_count": 3,
+                "dislike_count": 8,
+                "reply_text": "This is Reply Test 2"
+            }
+        ]
+    }
+]

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Facebook, Google, Github } from '@/store/icons/Icons'
 import { signOut, useSession } from 'next-auth/react';
 import { AuthFunc } from '@/utils/Auth';
-import { fetchMainApi } from '@/utils/fetch/clientSideFetchApi';
+import { FetchMainApi } from '@/utils/fetch/clientSideFetchApi';
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/navigation';
 
@@ -20,7 +20,7 @@ export default function ThirdPartyLogin() {
                 email: userData?.email,
                 profile_image: userData?.image
             }
-            fetchMainApi({url: "/user/google/login", method: "post", data:loginData})
+            FetchMainApi({url: "/user/google/login", method: "post", data:loginData})
             .then(res => {
                 setCookie("_token",res.data.token)
                 router.push("/")

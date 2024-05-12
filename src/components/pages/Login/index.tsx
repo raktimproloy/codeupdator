@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Login } from '@/store/icons/Icons'
 import Link from 'next/link'
-import { fetchMainApi } from '@/utils/fetch/clientSideFetchApi';
+import { FetchMainApi } from '@/utils/fetch/clientSideFetchApi';
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/navigation';
 import ThirdPartyLogin from '@/components/shared/ThridPartyLogin/ThirdPartyLogin';
@@ -10,6 +10,7 @@ import ThirdPartyLogin from '@/components/shared/ThridPartyLogin/ThirdPartyLogin
 function Index() {
   const [cookie, setCookie] = useCookies(["_token"])
   const router = useRouter()
+  
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: ""
@@ -17,7 +18,7 @@ function Index() {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    fetchMainApi({url: "/user/login", method: "post", data:loginDetails})
+    FetchMainApi({url: "/user/login", method: "post", data:loginDetails})
     .then(res => {
       setCookie("_token",res.data.token, { path: '/' })
       router.push("/")

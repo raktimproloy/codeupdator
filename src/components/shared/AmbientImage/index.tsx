@@ -10,7 +10,11 @@ interface IndexProps{
 
 function Index({imageSrc, count}:IndexProps) {
   const [theme, setTheme] = useState("light")
-  
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   useEffect(() => {
       var htmlElement = document.documentElement;
       const localTheme = localStorage.getItem("_theme") || "light"
@@ -19,6 +23,7 @@ function Index({imageSrc, count}:IndexProps) {
   }, [])
 
   useEffect(() => {
+    if(window){
       const img:any = document.getElementById(`js-video${count}`);
       const canvas:any = document.getElementById(`js-canvas${count}`);
       const ctx = canvas.getContext("2d");
@@ -44,11 +49,12 @@ function Index({imageSrc, count}:IndexProps) {
       return () => {
         init(); // Cleanup on component unmount
       };
-    }, []);
+    }
+    }, [isClient]);
 
   return (
     <section className={`${Styles.wrapper} ${theme === "light" ? "hidden" : "block"}`}>
-      <Image src={`${imageSrc}`} className={`${Styles.video}`} id={`js-video${count}`} width={1000} height={1000}
+      <Image src={`${imageSrc}`} className={`${Styles.video}`} id={`js-video${count}`} width={1000} height={1000} 
       alt='card' />
       <canvas width="10" height="8" className={`${Styles.canvas}`} aria-hidden="true" id={`js-canvas${count}`}></canvas>
     </section>

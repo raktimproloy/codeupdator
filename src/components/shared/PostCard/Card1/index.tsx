@@ -4,6 +4,8 @@ import styles from "./style.module.css"
 import { CommentBox, SavePost, HeartEmpty, ShareBtn, ThreeDotVerticale } from '@/store/icons/Icons'
 import AmbientImage from "@/components/shared/AmbientImage"
 import DropDown from './DropDown'
+import Like from './Like'
+import Saved from './Saved'
 
 
 interface PropsType {
@@ -14,7 +16,9 @@ interface PropsType {
 
 function index({data, count}: PropsType) {
   const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL
-  const {package_name, version, image, details} = data
+  const {package_name, version, image, details, id} = data
+  const likesData = JSON.parse(data.likes_user_id)
+  const savesData = JSON.parse(data.saves_user_id)
   const imageSrc=`${IMAGE_URL}${image}`
   return (
         <div className={`w-fit h-fit shadow rounded p-3 home_news_feed_card my-5 ${styles.card}`}>
@@ -50,14 +54,7 @@ function index({data, count}: PropsType) {
           </div>
           <div className="flex justify-between">
             <div className="flex space-x-6">
-
-              <div className="flex flex-row justify-center items-center space-x-1">
-                <div className="w-7 h-7 cursor-pointer" title="Heart">
-                  <HeartEmpty/>
-                </div>
-                <div className="font-semibold text-sm">1,250</div>
-              </div>
-
+              <Like likesData={likesData} id={id} />
 
               <div className="flex flex-row justify-center items-center space-x-1">
                 <div className="w-7 h-7 cursor-pointer" title="Comment">
@@ -74,13 +71,7 @@ function index({data, count}: PropsType) {
               </div>
 
             </div>
-            
-            <div className="flex flex-row justify-center items-center space-x-1">
-                <div className="w-8 h-8 cursor-pointer" title="Save post">
-                  <SavePost/>
-                </div>
-                {/* <div className="font-semibold text-gray-700 text-sm">1,250</div> */}
-              </div>
+            <Saved savesData={savesData} id={id}/>
 
           </div>
         </div>
