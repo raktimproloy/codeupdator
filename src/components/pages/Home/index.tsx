@@ -14,7 +14,7 @@ export default async function index() {
           {/* Left Section */}
           {
             posts && posts.length > 0 && posts.map((post:any, index:any) => 
-              <Card1 key={index} data={post} count={index} />
+              <Card1 key={post.id} data={post} count={index} />
             )
           }
           {/* <PostPlaceholder/> */}

@@ -6,6 +6,7 @@ import AmbientImage from "@/components/shared/AmbientImage"
 import DropDown from './DropDown'
 import Like from './Like'
 import Saved from './Saved'
+import WebsiteIcon from "/public/images/icon.png"
 
 
 interface PropsType {
@@ -16,7 +17,7 @@ interface PropsType {
 
 function index({data, count}: PropsType) {
   const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL
-  const {package_name, version, image, details, id} = data
+  const {package_name, version, image, details, id, date} = data
   const likesData = JSON.parse(data.likes_user_id)
   const savesData = JSON.parse(data.saves_user_id)
   const imageSrc=`${IMAGE_URL}${image}`
@@ -28,13 +29,13 @@ function index({data, count}: PropsType) {
         <div className="flex justify-between items-center space-x-5">
             <div className="flex items-center space-x-2">
               <Image
-                src="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"
+                src={WebsiteIcon}
                 className="w-9 h-9 rounded-full object-cover" width={500} height={500}
                 alt='card'
               />
               <div className="font-semibold flex flex-col  justify-center">
-                <span>Getintocode</span>
-                <span className="text-xs">19 Nov 2023</span>
+                <span>CodesStackFlow</span>
+                <span className="text-xs">{date || ""}</span>
               </div>
             </div>
             <DropDown/>
@@ -63,12 +64,12 @@ function index({data, count}: PropsType) {
                 <div className="font-semibold text-sm">1,250</div>
               </div>
 
-              <div className="flex flex-row justify-center items-center space-x-1">
+              {/* <div className="flex flex-row justify-center items-center space-x-1">
                 <div className="w-7 h-7 cursor-pointer" title="Share">
                   <ShareBtn/>
                 </div>
                 <div className="font-semibold text-sm">1,250</div>
-              </div>
+              </div> */}
 
             </div>
             <Saved savesData={savesData} id={id}/>

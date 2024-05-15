@@ -1,0 +1,26 @@
+[
+    {
+        "label": "Node js",
+        "value": "node-js",
+        "color": "#ffffff",
+        "background": "#00a96e"
+    },
+    {
+        "label": "PHP",
+        "value": "php",
+        "color": "#000000",
+        "background": "#ff52d9"
+    },
+    {
+        "label": "Laravel",
+        "value": "laravel",
+        "color": "#a6adbb",
+        "background": "#2a323c"
+    },
+    {
+        "label": "HTML",
+        "value": "html",
+        "color": "#000000",
+        "background": "#e7be00"
+    }
+]

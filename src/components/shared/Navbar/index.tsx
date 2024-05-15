@@ -223,7 +223,7 @@ function Index() {
                         <div className="w-9 rounded-full">
                             <Image
                                 className="w-9 h-9 rounded-full"
-                                src={DefaultProfileImage}
+                                src={profileData.profile_image ? profileData.profile_image : DefaultProfileImage}
                                 width={100}
                                 height={100}
                                 alt="profile"

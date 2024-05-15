@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useRef } from 'react'
-import { ThreeDotVerticale } from '@/store/icons/Icons'
+import { ThreeDotVerticale, ShareBtn } from '@/store/icons/Icons'
 
 function DropDown() {
     const itemRef = useRef<HTMLDetailsElement | null>(null);
@@ -31,14 +31,15 @@ function DropDown() {
         <details ref={itemRef}>
             <summary className='m-1 btn btn-ghost btn-circle avatar hover:bg-transparent'>
             <div className="w-5 cursor-pointer" title="More">
-                <ThreeDotVerticale/>
+                {/* <ThreeDotVerticale/> */}
+                <ShareBtn/>
             </div>
             </summary>
             <ul className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52`}>
                 <li><span>Copy Link</span></li>
-                <li><span>Add Interest</span></li>
-                <li><span>Edit</span></li>
-                <li><span>Delete</span></li>
+                {/* <li><span>Add Interest</span></li> */}
+                {/* <li><span>Edit</span></li> */}
+                {/* <li><span>Delete</span></li> */}
                 <li><span>Report</span></li>
             </ul>
         </details>

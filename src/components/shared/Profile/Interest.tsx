@@ -13,8 +13,8 @@ function Interest() {
   return (
     <div className="flex space-x-1">
       {
-        interestData && interestData.length > 0 && interestData.map((item: string, index: number) => 
-          <span className="indicator-item indicator-top indicator-start badge badge-success text-white rounded" key={index}>{item}</span>
+        interestData && interestData.length > 0 && interestData.map(item => 
+          <span className="indicator-item indicator-top indicator-start badge badge-success text-white rounded" style={{background: item.background, color: item.color}} key={item.value}>{item.label}</span>
         )
       }
 

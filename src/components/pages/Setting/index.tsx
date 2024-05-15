@@ -1,16 +1,17 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Select from '@/components/shared/MultiSelect/Select'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Image from 'next/image'
 import { FetchMainApi } from '@/utils/fetch/clientSideFetchApi'
 import { useCookies } from 'react-cookie'
+import { updateProfileProperty } from '@/store/redux/slices/profileSlice'
 
 
 function Index() {
   const [settingTab, setSettingTab] = useState(1)
   const [isClient, setIsClient] = useState(false)
-
+  const dispatch = useDispatch()
   const [cookie, setCookie] = useCookies(["_token"]);
   const header = {
     'Authorization': `Bearer ${cookie._token}`
@@ -21,22 +22,29 @@ function Index() {
   }, [])
   const profile = useSelector((state:any) => state.profile)
   const [profileData, setProfileData] = useState<any>()
+  const [interest, setInterest] = useState<any>([])
 
   useEffect(() => {
+    if (profile.interest) {
+      setInterest(JSON.parse(profile.interest));
+    }
     setProfileData(profile)
   }, [profile])
 
   const handleUpdateProfile = (e:any) => {
     e.preventDefault()
-    FetchMainApi({url: `/user/update/${profileData.id}`, method:"put", data:profileData, header:header})
+    const updateData = {
+      ...profileData,
+      interest: JSON.stringify(interest)
+    }
+    FetchMainApi({url: `/user/update/${profileData.id}`, method:"put", data:updateData, header:header})
     .then((res) => {
-      console.log(res)
+      dispatch(updateProfileProperty("interest", JSON.stringify(interest)));
     })
     .catch((err) => {
       console.log(err)
     })
   }
-
   if(isClient){
     return (
       <>
@@ -104,10 +112,6 @@ function Index() {
                     </div>
                   </div>
   
-  
-  
-  
-  
                   <div className="p-4 mb-4 shadow border border-base-300 rounded-lg 2xl:col-span-2">
                     <div className="flow-root">
                       <h3 className="text-xl font-semibold">
@@ -116,18 +120,25 @@ function Index() {
                       <ul className="divide-y">
                         <li className="py-4">
                           <div className="mb-3 w-full flex space-x-1 mt-3">
-                            <span className="indicator-item indicator-top indicator-start badge badge-success text-white rounded">Node js</span>
+                            {
+                              interest && interest.length > 0 && interest.map(item => 
+                                <span key={item.value} className={`indicator-item indicator-top indicator-start badge rounded`} style={{background: item.background, color: item.color}}>{item.label}</span>
+                              )
+                            }
+                            {/* <span className="indicator-item indicator-top indicator-start badge badge-success text-white rounded">Node js</span>
                             <span className="indicator-item indicator-top indicator-center badge badge-secondary rounded">PHP</span>
                             <span className="indicator-item indicator-middle indicator-start badge badge-neutral rounded">Laravel</span>
-                            <span className="indicator-item indicator-middle indicator-center badge badge-warning rounded">HTML</span></div>
+                            <span className="indicator-item indicator-middle indicator-center badge badge-warning rounded">HTML</span> */}
+                          </div>
                           <div>
                             <span>Select Your Language</span>
-                            <Select />
+                            <Select selected={interest} setSelected={setInterest} />
                           </div>
   
                           <button
                             className="btn btn-primary mb-5"
                             type="submit"
+                            onClick={handleUpdateProfile}
                           >
                             Save all
                           </button>
