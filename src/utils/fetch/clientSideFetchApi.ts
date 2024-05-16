@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios"
+import { useCookies } from "react-cookie";
 const BASE_MAIN_API = process.env.NEXT_PUBLIC_MAIN_API
 
 interface FetchProps {
@@ -24,7 +25,8 @@ interface FetchProps {
  * @param {FetchProps} props - The properties for the fetch operation including url, method, and optional data.
  * @returns {Promise<AxiosResponse<any>>} A promise that resolves with the Axios response object or rejects with an error if the method is unsupported.
  */
-export const fetchMainApi = ({ url, method, data, header }: FetchProps): Promise<AxiosResponse<any>> => {
+export const FetchMainApi = ({ url, method, data, header }: FetchProps): Promise<AxiosResponse<any>> => {
+
   // Check if the method is 'post' and send a POST request using axios
   if (method === "post") {
     return axios.post(`${BASE_MAIN_API}${url}`, { ...data },{

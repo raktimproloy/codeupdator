@@ -12,6 +12,7 @@ import DefaultProfileImage from "/public/images/default-profile.png";
 import { AuthFunc } from '@/utils/Auth';
 import { useCookies } from 'react-cookie';
 import { signOut } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 
 const megaMenu  =[
@@ -118,6 +119,7 @@ const megaMenu  =[
 
 function Index() {
     const [cookie, setCookie, removeCookie] = useCookies()
+    const profileData = useSelector((state:any) => state.profile)
     const isAuth = AuthFunc();
     const [theme, setTheme] = useState("")
     const detailsRef = useRef<HTMLDetailsElement | null>(null);
@@ -128,6 +130,7 @@ function Index() {
     }, [])
 
     const handleTheme = (e: any) => {
+        window.location.reload();
         const newTheme = e.target.checked ? "light" : "dark";
         var htmlElement = document.documentElement;
         htmlElement.setAttribute("data-theme", newTheme);
@@ -220,7 +223,7 @@ function Index() {
                         <div className="w-9 rounded-full">
                             <Image
                                 className="w-9 h-9 rounded-full"
-                                src={DefaultProfileImage}
+                                src={profileData.profile_image ? profileData.profile_image : DefaultProfileImage}
                                 width={100}
                                 height={100}
                                 alt="profile"
@@ -245,7 +248,7 @@ function Index() {
                                 isAuth ? 
                                 <>
                                 <li className='mt-2' onClick={handleProfileClick}>
-                                <Link href={"/profile/me"} className="justify-between">
+                                <Link href={`/profile/${profileData.username}`} className="justify-between">
                                     Profile
                                 </Link>
                                 </li>

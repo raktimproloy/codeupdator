@@ -1,7 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
-import { WorldIc, LockOnlyMe } from "@/store/icons/Icons"
-import Select from '@/components/shared/MultiSelect/Select'
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 const Quill = dynamic(() => import('./Quill'), {
     ssr: false
@@ -9,7 +7,7 @@ const Quill = dynamic(() => import('./Quill'), {
 const ImageUpload = dynamic(() => import('./ImageUpload'), {
     ssr: false
 })
-const MultiSelect = dynamic(() => import('@/components/shared/MultiSelect/Select'), {
+const MultiSelect = dynamic(() => import('@/components/shared/MultiSelect/NormalSelect'), {
     ssr: false
 })
 
@@ -28,6 +26,7 @@ function AddProblem() {
                 </div>
             </label>
             <div className="px-8">
+                <span>Filter</span>
                 <MultiSelect/>
             </div>
         </div>
@@ -64,7 +63,7 @@ function AddProblem() {
 
                         <div className="my-2 w-1/2">
                             <span>Select Your Language</span>
-                            <Select />
+                            <MultiSelect />
                         </div> </div>
 
 

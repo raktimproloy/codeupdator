@@ -1,7 +1,7 @@
 'use client'
 import { Signup } from '@/store/icons/Icons'
 import React, { useState } from 'react'
-import { fetchMainApi } from '@/utils/fetch/clientSideFetchApi'
+import { FetchMainApi } from '@/utils/fetch/clientSideFetchApi'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
 import ThirdPartyLogin from '@/components/shared/ThridPartyLogin/ThirdPartyLogin'
@@ -26,7 +26,7 @@ function Index() {
     e.preventDefault()
     if(signupDetails.full_name && signupDetails.username && signupDetails.email && signupDetails.password){
       if(signupDetails.password === confirmPassword){
-        fetchMainApi({url: "/user/signup", method: "post", data:signupDetails})
+        FetchMainApi({url: "/user/signup", method: "post", data:signupDetails})
         .then(res => {
           setCookie("_token",res.data.token)
           router.push("/")
