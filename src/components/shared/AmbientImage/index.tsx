@@ -10,6 +10,11 @@ interface IndexProps {
 
 function Index({ imageSrc, count }: IndexProps) {
   const [theme, setTheme] = useState("light");
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const localTheme = localStorage.getItem("_theme") || "light";

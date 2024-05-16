@@ -14,7 +14,7 @@ export default async function index() {
           {/* Left Section */}
           {
             posts && posts.length > 0 && posts.map((post:any, index:any) => 
-              <Card1 key={post.id} data={post} count={index} />
+              post.status === "publish" && <Card1 key={post.id} data={post} count={index} />
             )
           }
           {/* <PostPlaceholder/> */}

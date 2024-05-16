@@ -22,5 +22,17 @@
         "value": "html",
         "color": "#000000",
         "background": "#e7be00"
+    },
+    {
+        "label": "React Js",
+        "value": "reactjs",
+        "color": "#000000",
+        "background": "#e7be00"
+    },
+    {
+        "label": "Vue Js",
+        "value": "vuejs",
+        "color": "#000000",
+        "background": "#e7be00"
     }
 ]

@@ -2,15 +2,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Styles from "./style.module.css"
 import InterestData from "@/store/json/interest.json"
+import { removeValueFromArray } from '@/utils/removeValueFromArray'
 
 
-function Select({selected, setSelected}:any) {
+function Select({selected, setSelected, setReqInterest, reqInterest}:any) {
+    console.log(reqInterest)
     const [open, setOpen] = useState(false)
     const selectRef = useRef<HTMLDivElement>(null);
     // const [selected, setSelected] = useState<any>([])
     const [options, setOptions] = useState([])
-    // Add a new state to track the visibility of the added card
-    const [showAddedCard, setShowAddedCard] = useState(false);
 
     useEffect(() => {
         const allData = InterestData.map(item => 
@@ -29,13 +29,23 @@ function Select({selected, setSelected}:any) {
           if (option.value === value) {
             // Check if the option is already selected
             const isSelected = selected.some((select) => select.value === value);
-      
+
             if (isSelected) {
               // If selected, remove it from the selected array
               setSelected(selected.filter((select) => select.value !== value));
+              const reqRemove = reqInterest.remove_interest
+              const reqAdd = reqInterest.add_interest
+              const removeAdd = removeValueFromArray(reqAdd, option.value)
+              reqRemove.push(option.value)
+              setReqInterest({...reqInterest, remove_interest: reqRemove, add_interest: removeAdd})
             } else {
               // If not selected, add it to the selected array
               setSelected([...selected, {label: option.label, value: option.value, color: option.color, background: option.background}]);
+              const reqAdd = reqInterest.add_interest
+              const reqRemove = reqInterest.remove_interest
+              const removeRemove = removeValueFromArray(reqRemove, option.value)
+              reqAdd.push(option.value)
+              setReqInterest({...reqInterest, add_interest: reqAdd, remove_interest: removeRemove})
             }
       
             // Toggle the selected state for the current option
@@ -58,6 +68,11 @@ function Select({selected, setSelected}:any) {
               if (isSelected) {
                 // If selected, remove it from the selected array
                 setSelected(selected.filter((select) => select.value !== value));
+                const reqRemove = reqInterest.remove_interest
+                const reqAdd = reqInterest.add_interest
+                const removeAdd = removeValueFromArray(reqAdd, option.value)
+                reqRemove.push(option.value)
+                setReqInterest({...reqInterest, remove_interest: reqRemove, add_interest: removeAdd})
               }
               // Toggle the selected state for the current option
               return { ...option, selected: false };
@@ -68,7 +83,6 @@ function Select({selected, setSelected}:any) {
           // Update the state with the new options array
           setOptions(updatedOptions);
     }
-
 
     // Close the dropdown when clicking outside of the select component
     useEffect(() => {

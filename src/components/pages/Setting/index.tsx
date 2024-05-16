@@ -23,11 +23,17 @@ function Index() {
   const profile = useSelector((state:any) => state.profile)
   const [profileData, setProfileData] = useState<any>()
   const [interest, setInterest] = useState<any>([])
-
+  const [reqInterest, setReqInterest]  = useState({
+    user_id: "",
+    remove_interest: [],
+    add_interest: []
+  })
+  
   useEffect(() => {
     if (profile.interest) {
       setInterest(JSON.parse(profile.interest));
     }
+    setReqInterest({...reqInterest, user_id: profile.id})
     setProfileData(profile)
   }, [profile])
 
@@ -39,6 +45,7 @@ function Index() {
     }
     FetchMainApi({url: `/user/update/${profileData.id}`, method:"put", data:updateData, header:header})
     .then((res) => {
+      FetchMainApi({url: `/post-category/interest`, method: "put", data:reqInterest, header: header })
       dispatch(updateProfileProperty("interest", JSON.stringify(interest)));
     })
     .catch((err) => {
@@ -132,7 +139,7 @@ function Index() {
                           </div>
                           <div>
                             <span>Select Your Language</span>
-                            <Select selected={interest} setSelected={setInterest} />
+                            <Select selected={interest} setSelected={setInterest} setReqInterest={setReqInterest} reqInterest={reqInterest} />
                           </div>
   
                           <button
