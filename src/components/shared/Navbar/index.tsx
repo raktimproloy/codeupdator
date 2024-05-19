@@ -13,6 +13,7 @@ import { AuthFunc } from '@/utils/Auth';
 import { useCookies } from 'react-cookie';
 import { signOut } from 'next-auth/react';
 import { useSelector } from 'react-redux';
+import ProfileImage from '../ProfileImage/ProfileImage';
 
 
 const megaMenu  =[
@@ -221,13 +222,7 @@ function Index() {
                     <details ref={profileRef}>
                         <summary className='btn btn-ghost btn-circle avatar'>
                         <div className="w-9 rounded-full">
-                            <Image
-                                className="w-9 h-9 rounded-full"
-                                src={profileData.profile_image ? profileData.profile_image : DefaultProfileImage}
-                                width={100}
-                                height={100}
-                                alt="profile"
-                            />
+                            <ProfileImage/>
                         </div>
                         </summary>
                         <ul className={`mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded w-52`}>

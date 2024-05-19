@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-function ImageUpload() {
-    const [files, setFiles] = useState<File[]>([]);
+function ImageUpload({files, setFiles}:any) {
     const [dragActive, setDragActive] = useState<boolean>(false);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,22 +1,25 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import Styles from "./style.module.css"
+import selectData from "@/store/json/interest.json"
 
-
-function NormalSelect() {
+function NormalSelect({selected, setSelected}:any) {
     const [open, setOpen] = useState(false)
     const selectRef = useRef<HTMLDivElement>(null);
-    const [selected, setSelected] = useState<{value: string, label: string}[]>([])
-    const [options, setOptions] = useState([
-        {value: "html", label: "HTML", selected: false},
-        {value: "css", label: "CSS", selected: false},
-        {value: "javascript", label: "Javascript", selected: false},
-        {value: "php", label: "PHP", selected: false},
-        {value: "laravel", label: "Laravel", selected: false},
-    ])
+    const [options, setOptions] = useState([])
     // Add a new state to track the visibility of the added card
     const [showAddedCard, setShowAddedCard] = useState(false);
 
+
+    useEffect(() => {
+        const allData = selectData.map(item => 
+            ({
+            ...item,
+            selected: false
+            })
+        );
+        setOptions(allData)
+    }, [])
 
     // selection Function
     const handleSelectOption = (value: string) => {
@@ -31,7 +34,7 @@ function NormalSelect() {
               setSelected(selected.filter((select) => select.value !== value));
             } else {
               // If not selected, add it to the selected array
-              setSelected([...selected, { value: option.value, label: option.label }]);
+              setSelected([...selected, { value: option.value, label: option.label, color: option.color, background: option.background }]);
             }
       
             // Toggle the selected state for the current option
@@ -90,7 +93,7 @@ function NormalSelect() {
                         <div className="flex flex-auto flex-wrap">
                             {/* Selected Card */}
                             {
-                            selected.map((select: {value: string, label: string}, index:number) =>
+                            selected && selected.length > 0 && selected.map((select: {value: string, label: string}, index:number) =>
                             <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded text-[#c7203e] bg-teal-100 border border-[#c7203e] ${Styles.fade_in}`} key={index}>
                                 <div className="text-xs font-normal leading-none max-w-full flex-initial">{select.label}</div>
                                 <div className="flex flex-auto flex-row-reverse">
@@ -107,7 +110,7 @@ function NormalSelect() {
                             {/* Selected Card End */}
 
                             <div className="flex-1">
-                                <input placeholder={selected.length > 0 ? "" : "Select interest ..."} className="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" onClick={() => setOpen(!open)}/>
+                                <input placeholder={selected && selected.length > 0 ? "" : "Select interest ..."} className="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" onClick={() => setOpen(!open)}/>
                             </div>
                         </div>
                         <div className="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
