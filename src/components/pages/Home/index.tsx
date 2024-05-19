@@ -3,10 +3,11 @@ import Card1 from "@/components/shared/PostCard/Card1";
 import RightSection from "@/components/shared/RightSection/RightSection";
 import PostPlaceholder from "@/components/shared/Placeholder/PostPlaceholder";
 import { fetchDataFromServer } from "@/utils/fetch/serverSideFetchApi";
+import Observer from "./Observer";
 
 export default async function index() {
   const BASE_MAIN_API = process.env.NEXT_PUBLIC_MAIN_API
-  const posts = await fetchDataFromServer(`${BASE_MAIN_API}/update-post/get`);
+  const posts = await fetchDataFromServer(`${BASE_MAIN_API}/update-post/1`);
   return (
     <>
       <div className="max-w-6xl flex flex-row space-x-5 mx-auto py-5">
@@ -17,6 +18,7 @@ export default async function index() {
               post.status === "publish" && <Card1 key={post.id} data={post} count={index} />
             )
           }
+          {/* <Observer/> */}
           {/* <PostPlaceholder/> */}
         </div>
 
