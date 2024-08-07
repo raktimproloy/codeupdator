@@ -8,6 +8,9 @@ import { url } from "inspector";
 import { FetchMainApi } from "@/utils/fetch/clientSideFetchApi";
 import { useCookies } from "react-cookie";
 import {currentDate} from "@/utils/currentDate"
+import LoadingPopup from "@/components/shared/Loading/LoadingPopup";
+import Toast from "@/components/shared/Toast/Toast";
+import { useRouter } from "next/navigation";
 const Quill = dynamic(() => import('./Quill'), {
     ssr: false
 })
@@ -25,6 +28,15 @@ function AddProblem() {
     const profileData = useSelector((state:any) => state.profile)
     const [selected, setSelected] = useState<any>([])
 
+    const router = useRouter()
+    const [showLoading, setShowLoading] = useState(false)
+  
+    const [toast, setToast] = useState({
+      active: false,
+      status: "error",
+      message: "This is error"
+    })
+
     const [cookie, setCookie] = useCookies(["_token"]);
     const header = {
       'Authorization': `Bearer ${cookie._token}`
@@ -34,7 +46,18 @@ function AddProblem() {
         image: [],
     })
 
+    const setDefault = () => {
+        setFiles([])
+        setValue(``)
+        setSelected([])
+        setProblemPost({
+            status: "draft",
+            image: [],
+        })
+    }
+
     const handleProblemPost = () => {
+        setShowLoading(true)
         if(files.length > 0){
             const formData = new FormData();
             files.forEach((file, index) => {
@@ -58,9 +81,22 @@ function AddProblem() {
                 }
                 FetchMainApi({url: "/problem-post/post", method: "post", header: header, data: reqData})
                 .then((res) => {
-                    console.log(res)
+                    setShowLoading(false)
+                    setToast({
+                      active: true,
+                      status: "success",
+                      message: "Your post posted successful."
+                    })
+                    setDefault()
+                    router.push("/problem")
                 })
                 .catch((err) => {
+                    setShowLoading(false)
+                    setToast({
+                      active: true,
+                      status: "error",
+                      message: "Your post posted unsuccessful."
+                    })
                     console.log(err)
                 })
             })
@@ -79,15 +115,30 @@ function AddProblem() {
             }
             FetchMainApi({url: "/problem-post/post", method: "post", header: header, data: reqData})
             .then((res) => {
-                console.log(res)
+                setShowLoading(false)
+                setToast({
+                  active: true,
+                  status: "success",
+                  message: "Your post posted successful."
+                })
+                setDefault()
+                router.push("/problem")
             })
             .catch((err) => {
+                setShowLoading(false)
+                setToast({
+                  active: true,
+                  status: "success",
+                  message: "Your post posted unsuccessful."
+                })
                 console.log(err)
             })
         }
     }
 
     return <>
+    <LoadingPopup active={showLoading} />
+    <Toast toast={toast} setToast={setToast} />
         <div className="card w-full bg-base-100 shadow-md rounded">
             <label htmlFor="create_a_problem" className="card-body cursor-pointer rounded">
                 <div className="flex space-x-3 items-center">

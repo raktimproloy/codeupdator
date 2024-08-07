@@ -1,7 +1,7 @@
 'use client'
 import { AuthFunc } from "@/utils/Auth"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function RootLayout({
     children,
@@ -9,6 +9,7 @@ export default function RootLayout({
     children: React.ReactNode
   }) {
     const router = useRouter()
+
     const isAuth = AuthFunc()
     
     useEffect(() => {
@@ -24,6 +25,12 @@ export default function RootLayout({
       // Clean up the timeout on component unmount
       return () => clearTimeout(timeoutId);
     }, [isAuth, router]);
+
+    if (isAuth === null) {
+      // Optionally render a loading state while checking authentication
+      return <div>Loading...</div>;
+    }
+
     return (
         <>
             {children}

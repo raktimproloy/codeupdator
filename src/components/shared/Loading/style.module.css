@@ -1,0 +1,12 @@
+.loadingContainer{
+    position: fixed;
+    width: 14rem;
+    top: -15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    transition: all .5s ease-in-out;
+}
+.showLoading{
+    top: 5%
+}

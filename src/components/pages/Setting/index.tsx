@@ -6,12 +6,23 @@ import Image from 'next/image'
 import { FetchMainApi } from '@/utils/fetch/clientSideFetchApi'
 import { useCookies } from 'react-cookie'
 import { updateProfileProperty } from '@/store/redux/slices/profileSlice'
+import LoadingPopup from '@/components/shared/Loading/LoadingPopup'
+import Toast from '@/components/shared/Toast/Toast'
 
 
 function Index() {
   const [settingTab, setSettingTab] = useState(1)
   const [isClient, setIsClient] = useState(false)
   const dispatch = useDispatch()
+  const packageData = useSelector((state:any) => state.package)
+  console.log(packageData)
+  const [showLoading, setShowLoading] = useState(false)
+  
+  const [toast, setToast] = useState({
+    active: false,
+    status: "error",
+    message: "This is error"
+  })
   const [cookie, setCookie] = useCookies(["_token"]);
   const header = {
     'Authorization': `Bearer ${cookie._token}`
@@ -38,6 +49,7 @@ function Index() {
   }, [profile])
 
   const handleUpdateProfile = (e:any) => {
+    setShowLoading(true)
     e.preventDefault()
     const updateData = {
       ...profileData,
@@ -47,15 +59,29 @@ function Index() {
     .then((res) => {
       FetchMainApi({url: `/post-category/interest`, method: "put", data:reqInterest, header: header })
       dispatch(updateProfileProperty("interest", JSON.stringify(interest)));
+      setShowLoading(false)
+      setToast({
+        active: true,
+        status: "success",
+        message: "Your profile updated successful."
+      })
     })
     .catch((err) => {
       console.log(err)
+      setShowLoading(false)
+      setToast({
+        active: true,
+        status: "error",
+        message: "Your profile updated unsuccessful."
+      })
     })
   }
   if(isClient){
     return (
       <>
-        <div className='max-w-6xl m-auto px-5 mt-[100px]'>
+        <LoadingPopup active={showLoading} />
+        <Toast toast={toast} setToast={setToast} />
+        <div className={`max-w-6xl m-auto px-5 mt-[100px] ${showLoading ? "pointer-events-none" : ""}`}>
           <div className="md:flex">
             <ul className="flex-column space-y space-y-4 text-sm font-medium md:me-4 mb-4 md:mb-0">
               <li onClick={() => setSettingTab(1)}>
@@ -73,7 +99,7 @@ function Index() {
                 </a>
               </li>
             </ul>
-            <div className={`p-6 text-medium shadow border border-base-300 rounded-lg w-full ${settingTab === 1 ? "block" : "hidden"}`}>
+            <div className={`p-6 text-medium shadow border border-base-300 rounded-lg w-full mb-5 ${settingTab === 1 ? "block" : "hidden"}`}>
               <h3 className="text-lg font-bold mb-2">Settings:</h3>
   
               <div className="grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4">
@@ -107,13 +133,13 @@ function Index() {
                             }></textarea>
                         </div>
   
-                          <button
+                          {/* <button
                             className="btn btn-primary mb-5"
                             type="submit"
                             onClick={handleUpdateProfile}
                           >
                             Save all
-                          </button>
+                          </button> */}
                         </li>
                       </ul>
                     </div>
@@ -132,23 +158,11 @@ function Index() {
                                 <span key={item.value} className={`indicator-item indicator-top indicator-start badge rounded`} style={{background: item.background, color: item.color}}>{item.label}</span>
                               )
                             }
-                            {/* <span className="indicator-item indicator-top indicator-start badge badge-success text-white rounded">Node js</span>
-                            <span className="indicator-item indicator-top indicator-center badge badge-secondary rounded">PHP</span>
-                            <span className="indicator-item indicator-middle indicator-start badge badge-neutral rounded">Laravel</span>
-                            <span className="indicator-item indicator-middle indicator-center badge badge-warning rounded">HTML</span> */}
                           </div>
                           <div>
                             <span>Select Your Language</span>
                             <Select selected={interest} setSelected={setInterest} setReqInterest={setReqInterest} reqInterest={reqInterest} />
                           </div>
-  
-                          <button
-                            className="btn btn-primary mb-5"
-                            type="submit"
-                            onClick={handleUpdateProfile}
-                          >
-                            Save all
-                          </button>
                         </li>
                       </ul>
                     </div>
@@ -222,13 +236,13 @@ function Index() {
                             } />
                         </div>
                         <div className="col-span-6 sm:col-full">
-                          <button
+                          {/* <button
                             className="btn btn-primary"
                             type="submit"
                             onClick={handleUpdateProfile}
                           >
                             Save all
-                          </button>
+                          </button> */}
                         </div>
                       </div>
                     </form>
@@ -273,12 +287,13 @@ function Index() {
                           className="btn btn-primary"
                           type="submit"
                         >
-                          Save all
+                          Save Password
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div className="p-4 mb-4 shadow border border-base-300 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+
+                  {/* <div className="p-4 mb-4 shadow border border-base-300 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                     <div className="flow-root">
                       <h3 className="text-xl font-semibold">Sessions</h3>
                       <ul className="divide-y">
@@ -340,9 +355,18 @@ function Index() {
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
+                <div className='text-end'>
+                  <button
+                    className="btn btn-primary mb-5"
+                    type="submit"
+                    onClick={handleUpdateProfile}
+                  >
+                    Save all
+                  </button>
+                </div>
   
   
   

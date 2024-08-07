@@ -1,38 +1,26 @@
 [
     {
         "label": "Node js",
-        "value": "node-js",
-        "color": "#ffffff",
-        "background": "#00a96e"
+        "value": "node-js"
     },
     {
         "label": "PHP",
-        "value": "php",
-        "color": "#000000",
-        "background": "#ff52d9"
+        "value": "php"
     },
     {
         "label": "Laravel",
-        "value": "laravel",
-        "color": "#a6adbb",
-        "background": "#2a323c"
+        "value": "laravel"
     },
     {
         "label": "HTML",
-        "value": "html",
-        "color": "#000000",
-        "background": "#e7be00"
+        "value": "html"
     },
     {
         "label": "React Js",
-        "value": "reactjs",
-        "color": "#000000",
-        "background": "#e7be00"
+        "value": "reactjs"
     },
     {
         "label": "Vue Js",
-        "value": "vuejs",
-        "color": "#000000",
-        "background": "#e7be00"
+        "value": "vuejs"
     }
 ]

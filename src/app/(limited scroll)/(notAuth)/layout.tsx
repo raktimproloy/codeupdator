@@ -14,7 +14,12 @@ export default function RootLayout({
     useEffect(() => {
       const redirectToLogin = () => {
         if (isAuth) {
-          router.push("/");
+          const pathStore = JSON.parse(sessionStorage.getItem('path_info'))
+          if(pathStore && pathStore.from !== "/login"){
+            router.push(pathStore.from);
+          }else{
+            router.push("/");
+          }
         }
       };
   
