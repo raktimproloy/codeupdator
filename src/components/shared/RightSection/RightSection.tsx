@@ -4,8 +4,14 @@ import Button from './Button';
 import HalfFooter from '../Footer/HalfFooter';
 import Styles from "./style.module.css"
 import AuthHidden from '../AuthHidden/AuthHidden';
+import { postDataToServer } from '@/utils/fetch/serverSideFetchApi';
 
-function RightSection() {
+async function RightSection() {
+  const BASE_MAIN_API = process.env.NEXT_PUBLIC_MAIN_API
+  const problems = await postDataToServer(`${BASE_MAIN_API}/user/point/get/1`, {
+    limit: 3,
+  });
+  const userData = problems.data || []
   return (
     <div className={`w-2/6 hidden md:block`}>
           <div  className={`fixed top-26 w-[23.5rem] h-[70vh] overflow-y-scroll overflow-x-hidden ${Styles.scrollbar}`}>
@@ -23,9 +29,11 @@ function RightSection() {
 
         <div className='card shadow rounded my-5 p-5'>
           <div className='font-semibold text-xl'>Develper of this week:</div>
-          <Top_rated/>
-          <Top_rated/>
-          <Top_rated/>
+          {
+            userData && userData.length > 0 && userData.map((user) =>
+              <Top_rated key={user.id} data={user} />
+            )
+          }
         </div>
 
           </div>

@@ -1,24 +1,26 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import Styles from "./style.module.css"
-import InterestData from "@/store/json/interest.json"
+// import InterestData from "@/store/json/interest.json"
 import { removeValueFromArray } from '@/utils/removeValueFromArray'
+import { useSelector } from 'react-redux'
 
 
 function Select({selected, setSelected, setReqInterest, reqInterest}:any) {
-    console.log(reqInterest)
+    console.log(selected)
     const [open, setOpen] = useState(false)
     const selectRef = useRef<HTMLDivElement>(null);
+    const packageData = useSelector((state:any) => state.package)
     // const [selected, setSelected] = useState<any>([])
     const [options, setOptions] = useState([])
-
     useEffect(() => {
-        const allData = InterestData.map(item => 
+        const allData = packageData.map(item => 
             ({
             ...item,
-            selected: !!selected?.find(userItem => userItem.value === item.value)
+            selected: !!selected?.find(userItem => userItem == item.id)
             })
         );
+        console.log(allData)
         setOptions(allData)
     }, [selected])
 
@@ -26,25 +28,26 @@ function Select({selected, setSelected, setReqInterest, reqInterest}:any) {
     const handleSelectOption = (value: string) => {
         // Use the map function to create a new array with updated options
         const updatedOptions = options.map((option) => {
-          if (option.value === value) {
+          if (option.id == value) {
             // Check if the option is already selected
-            const isSelected = selected.some((select) => select.value === value);
+            const isSelected = selected.some((select) => select == value);
 
             if (isSelected) {
+                console.log("asd")
               // If selected, remove it from the selected array
-              setSelected(selected.filter((select) => select.value !== value));
+              setSelected(selected.filter((select) => select != value));
               const reqRemove = reqInterest.remove_interest
               const reqAdd = reqInterest.add_interest
-              const removeAdd = removeValueFromArray(reqAdd, option.value)
-              reqRemove.push(option.value)
+              const removeAdd = removeValueFromArray(reqAdd, option.slug)
+              reqRemove.push(option.slug)
               setReqInterest({...reqInterest, remove_interest: reqRemove, add_interest: removeAdd})
             } else {
               // If not selected, add it to the selected array
-              setSelected([...selected, {label: option.label, value: option.value, color: option.color, background: option.background}]);
+              setSelected([...selected, `${option.id}`]);
               const reqAdd = reqInterest.add_interest
               const reqRemove = reqInterest.remove_interest
-              const removeRemove = removeValueFromArray(reqRemove, option.value)
-              reqAdd.push(option.value)
+              const removeRemove = removeValueFromArray(reqRemove, option.slug)
+              reqAdd.push(option.slug)
               setReqInterest({...reqInterest, add_interest: reqAdd, remove_interest: removeRemove})
             }
       
@@ -61,17 +64,17 @@ function Select({selected, setSelected, setReqInterest, reqInterest}:any) {
     const handleRemove = (value: string) => {
         // Use the map function to create a new array with updated options
         const updatedOptions = options.map((option) => {
-            if (option.value === value) {
+            if (option.id == value) {
               // Check if the option is already selected
-              const isSelected = selected.some((select) => select.value === value);
+              const isSelected = selected.some((select) => select == value);
         
               if (isSelected) {
                 // If selected, remove it from the selected array
-                setSelected(selected.filter((select) => select.value !== value));
+                setSelected(selected.filter((select) => select != value));
                 const reqRemove = reqInterest.remove_interest
                 const reqAdd = reqInterest.add_interest
-                const removeAdd = removeValueFromArray(reqAdd, option.value)
-                reqRemove.push(option.value)
+                const removeAdd = removeValueFromArray(reqAdd, option.slug)
+                reqRemove.push(option.slug)
                 setReqInterest({...reqInterest, remove_interest: reqRemove, add_interest: removeAdd})
               }
               // Toggle the selected state for the current option
@@ -108,11 +111,12 @@ function Select({selected, setSelected, setReqInterest, reqInterest}:any) {
                         <div className="flex flex-auto flex-wrap">
                             {/* Selected Card */}
                             {
-                            selected && selected.length > 0 && selected.map((select: {value: string, label: string}, index:number) =>
-                            <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded text-[#c7203e] bg-teal-100 border border-[#c7203e] ${Styles.fade_in}`} key={index}>
-                                <div className="text-xs font-normal leading-none max-w-full flex-initial">{select.label}</div>
+                            options && options.length > 0 && options.map(({title, id, selected}:any) =>
+                                selected && 
+                            <div className={`flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded text-[#c7203e] bg-teal-100 border border-[#c7203e] ${Styles.fade_in}`} key={id}>
+                                <div className="text-xs font-normal leading-none max-w-full flex-initial">{title}</div>
                                 <div className="flex flex-auto flex-row-reverse">
-                                    <div onClick={() => handleRemove(select.value)}>
+                                    <div onClick={() => handleRemove(id)}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x cursor-pointer hover:text-[#c7203e] rounded-full w-4 h-4 ml-2">
                                             <line x1="18" y1="6" x2="6" y2="18"></line>
                                             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -141,11 +145,11 @@ function Select({selected, setSelected, setReqInterest, reqInterest}:any) {
                     <div className="flex flex-col w-full">
                         {/* Option Card */}
                         {
-                            options.map((option: {value: string, label: string, selected: boolean}, index:number) => 
-                            <div className="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-50" key={index} onClick={() => handleSelectOption(option.value)}>
+                            options.map((option: {id: any, slug: string, title: string, selected: boolean}, index:number) => 
+                            <div className="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-50" key={index} onClick={() => handleSelectOption(option.id)}>
                                 <div className={`flex w-full items-center p-2 pl-2 border-l-2 relative hover:border-[#c7203e] ${option.selected ? "border-l-4 border-[#c7203e] hover:border-[#c7203e]" : "border-l-4 border-teal-600 border-transparent"}`}>
                                     <div className="w-full items-center flex">
-                                        <div className="mx-2 leading-6 text-dark">{option?.label}</div>
+                                        <div className="mx-2 leading-6 text-dark">{option?.title}</div>
                                     </div>
                                 </div>
                             </div>

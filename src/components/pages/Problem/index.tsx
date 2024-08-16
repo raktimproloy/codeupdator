@@ -16,7 +16,11 @@ async function index() {
     <div className="max-w-6xl flex flex-row space-x-5 mx-auto py-5">
       <div className="w-full md:w-4/6">
         <AddProblem/>
-
+        {
+          problems || problems.length === 0 ?
+          <h1 className='text-center'>No Post Available</h1>
+          : ""
+        }
         {
           problems && problems.length > 0 && problems.map((problem) => 
             <ProblemCard data={problem} key={problem.id} />

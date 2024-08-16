@@ -10,10 +10,9 @@ import Like from './Like';
 import Saved from './Saved';
 
 async function ProblemCard ({data}:any) {
-    const {id, packages, details, image, likes_user_id, saves_user_id, author, date, author_image, author_name, author_username } = data
+    const {id, packages, details, image, likes_user_id, saves_user_id, date, authorDetails } = data
     const packagesData = JSON.parse(packages)
     const imagesData = JSON.parse(image)
-    const imageNumber = 3;
     const likesData = JSON.parse(likes_user_id)
     const savesData = JSON.parse(saves_user_id)
     return (
@@ -21,20 +20,15 @@ async function ProblemCard ({data}:any) {
             <div className={`w-fit h-fit shadow rounded p-3 home_news_feed_card my-5`}>
                 <div className="flex justify-between items-center space-x-5">
                     <div className="flex items-center space-x-2">
-                        {/* <Image
-                            src="https://img-cdn.tnwcdn.com/image?fit=1280%2C720&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2021%2F09%2FUntitled-design-14.jpg&signature=3de86691d6ab8d950654a02334fd2774"
-                            className="w-9 h-9 rounded-full object-cover" width={500} height={500}
-                            alt='card'
-                        /> */}
                         <Image
                             className="w-10 h-10 rounded-full"
-                            src={author_image ? author_image : DefaultProfileImage}
+                            src={authorDetails.profile_image ? authorDetails.profile_image : DefaultProfileImage}
                             width={100}
                             height={100}
                             alt="profile"
                         />
                         <div className="font-semibold flex flex-col  justify-center">
-                            <span>{author_name || ""}</span>
+                            <span>{authorDetails.full_name || ""}</span>
                             <span className="text-xs">{date || ""}</span>
                         </div>
                     </div>

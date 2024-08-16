@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Facebook, Google, Github } from '@/store/icons/Icons'
 import { signOut, useSession } from 'next-auth/react';
 import { AuthFunc } from '@/utils/Auth';
 import { FetchMainApi } from '@/utils/fetch/clientSideFetchApi';
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/navigation';
+import LoadingPopup from '../Loading/LoadingPopup';
+import Toast from '../Toast/Toast';
 
 export default function ThirdPartyLogin() {
     const router = useRouter()
@@ -12,8 +14,17 @@ export default function ThirdPartyLogin() {
     const session = useSession()
     const isAuth = AuthFunc()
 
-    useEffect(() => {
+    const [showLoading, setShowLoading] = useState(false)
+  
+    const [toast, setToast] = useState({
+      active: false,
+      status: "error",
+      message: "This is error"
+    })
+
+    useLayoutEffect(() => {
         if(session.data && !isAuth){
+            setShowLoading(true)
             const userData = session?.data?.user
             const loginData = {
                 full_name: userData?.name,
@@ -22,10 +33,24 @@ export default function ThirdPartyLogin() {
             }
             FetchMainApi({url: "/user/google/login", method: "post", data:loginData})
             .then(res => {
-                setCookie("_token",res.data.token)
-                router.push("/")
+                setShowLoading(false)
+                setToast({
+                    active: true,
+                    status: "success",
+                    message: "Login in successful."
+                })
+                setTimeout(() => {
+                    setCookie("_token",res.data.token)
+                    router.push("/")
+                }, 500);
             })
             .catch(err => {
+                setShowLoading(false)
+                setToast({
+                  active: true,
+                  status: "error",
+                  message: "Invalid Authentication!"
+                })
                 console.log(err)
             })
         }
@@ -64,19 +89,23 @@ export default function ThirdPartyLogin() {
     }
   
   return (
+    <>
+    <LoadingPopup active={showLoading} />
+    <Toast toast={toast} setToast={setToast} />
     <div className='flex flex-col space-y-3 justify-between items-center'>
         <button className="btn w-full rounded" onClick={googleSignin}>
         <Google/>
         Login with Google
         </button>
-        <button className="btn w-full rounded">
+        {/* <button className="btn w-full rounded">
         <Facebook/>
         Login with Facebook
-        </button>
-        <button className="btn w-full rounded">
+        </button> */}
+        {/* <button className="btn w-full rounded">
         <Github/>
         Login with Github
-        </button>
+        </button> */}
     </div>
+    </>
   )
 }

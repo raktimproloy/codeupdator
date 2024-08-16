@@ -10,12 +10,12 @@ export async function fetchDataFromServer(url: string, timeout: number = 10000) 
   try {
     const response = await fetch(url, { signal: controller.signal, cache: 'no-cache' });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      const error: Error = new Error(`Failed to fetch data. Server error: ${response.status} - ${errorText}`);
-      console.error(error);
-      throw error;
-    }
+    // if (!response.ok) {
+    //   const errorText = await response.text();
+    //   const error: Error = new Error(`Failed to fetch data. Server error: ${response.status} - ${errorText}`);
+    //   console.error(error);
+    //   throw error;
+    // }
 
     const responseBody = await response.text();
 

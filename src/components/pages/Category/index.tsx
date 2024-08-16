@@ -11,9 +11,10 @@ interface PropsData{
 async function index({slug}: PropsData) {
   const BASE_MAIN_API = process.env.NEXT_PUBLIC_MAIN_API
   const posts = await fetchDataFromServer(`${BASE_MAIN_API}/post-category/get/${slug}`);
-  const category = posts.data.category
-  const postList = posts.data.posts
-  const version = JSON.parse(category.version)
+  const category = posts?.data?.category
+  const postList = posts?.data?.posts
+  const version = JSON.parse(category?.version)
+  console.log(posts)
   return (
     <div className="max-w-6xl flex flex-row space-x-5 mx-auto py-5">
 
@@ -49,7 +50,7 @@ async function index({slug}: PropsData) {
       }
       {
         postList && postList.length > 0 && postList.map((post:any, index:any) => 
-          <Card1 key={post.id} data={post} count={index} />
+          post.status === "publish" && <Card1 key={post.id} data={post} count={index} />
         )
       }
     </div>

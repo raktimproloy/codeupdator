@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 export default function ThreeImage({images}:any) {
@@ -5,13 +6,13 @@ export default function ThreeImage({images}:any) {
   return (
     <div className="my-5 grid grid-cols-2 gap-3">
         <div className={`col-span-2 group bg-gray-800 text-gray-200 rounded-sm text-4xl text-center overflow-hidden relative`}>
-            <img src={`${BASE_UPLOAD_API}${images[0]}`} alt="" className="h-full w-full cursor-pointer" />
+            <Image src={`${BASE_UPLOAD_API}${images[0]}`} alt="" className="h-full w-full cursor-pointer" width={500} height={500} />
         </div>
         <div className="group bg-gray-800 text-gray-200 rounded-sm text-4xl text-center overflow-hidden relative">
-            <img src={`${BASE_UPLOAD_API}${images[1]}`} alt="" className="h-full w-full cursor-pointer" />
+            <Image src={`${BASE_UPLOAD_API}${images[1]}`} alt="" className="h-full w-full cursor-pointer" width={500} height={500} />
         </div>
         <div className="group bg-gray-800 text-gray-200 rounded-sm text-4xl text-center overflow-hidden relative">
-            <img src={`${BASE_UPLOAD_API}${images[2]}`} alt="" className="h-full w-full cursor-pointer" />
+            <Image src={`${BASE_UPLOAD_API}${images[2]}`} alt="" className="h-full w-full cursor-pointer" width={500} height={500} />
         </div>
 
     </div>
